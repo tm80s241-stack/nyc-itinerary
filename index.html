@@ -120,7 +120,18 @@ section{margin-top:44px}
   display:grid;place-items:center;font-weight:800;font-size:15px;letter-spacing:0}
 .cr b{display:block;margin-top:7px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
 .cr .n{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.3em;opacity:.5;margin-top:2px}
-@media (min-width:520px){.crew{grid-template-columns:repeat(6,1fr)}}
+.cr.couple{padding-top:14px}
+.cr .dots{display:flex;align-items:center;justify-content:center}
+.cr .dots .dot{margin:0}
+.cr .dash{width:14px;height:2.5px;background:var(--ink);flex:none;margin:0 -1px}
+.cr.bday{background:var(--kiosk);border-width:2.5px;box-shadow:3px 3px 0 rgba(17,18,20,.85)}
+.bdaytag{display:inline-flex;align-items:center;gap:5px;background:var(--ink);color:var(--kiosk);
+  font-family:var(--f-mono);font-size:9px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  padding:3px 8px;border-radius:3px;margin-bottom:9px;transform:rotate(-2deg)}
+.star{width:12px;height:12px;fill:var(--kiosk)}
+.plaque{display:inline-block;margin-top:12px;background:var(--kiosk);border:2.5px solid var(--ink);border-radius:4px;
+  padding:6px 12px 5px;font-family:var(--f-mono);font-weight:700;font-size:clamp(11px,3.2vw,14px);
+  letter-spacing:.22em;text-transform:uppercase;transform:rotate(-1.2deg);box-shadow:3px 3px 0 rgba(17,18,20,.85)}
 
 /* countdown kiosk */
 .kiosk{margin-top:14px;background:var(--ink);color:var(--kiosk);border:2px solid var(--ink);border-radius:var(--rad);
@@ -390,6 +401,7 @@ footer{margin:56px 16px 0;text-align:center;font-family:var(--f-mono);font-size:
     <div class="sign-tiles">
       <div class="over">New York City Transit · Official Crew Itinerary</div>
       <h1>New<br><em>York</em></h1>
+      <div class="plaque">Special Service — James's Birthday Trip</div>
     </div>
     <div class="sign-band">
       <span class="bullets">
@@ -406,7 +418,7 @@ footer{margin:56px 16px 0;text-align:center;font-family:var(--f-mono);font-size:
     <span class="tag">LIVE</span>
     <div class="roll" id="tickerRoll">
       <span>VS9 lands JFK T4 ~19:05 on Wed 18 Nov — see the countdown board below</span>
-      <span>6 riders: Lindsay · Gemma · Natalie · Adam · James · Tom</span>
+      <span>3 couples: Tom &amp; Gemma · James &amp; Lindsay · Adam &amp; Natalie</span>
       <span>Book ahead: The Rink · 9/11 Museum · Chicago · Knicks · club guest lists</span>
       <span>Weather 5–10°C · Winter Village open · Radio City Spectacular running</span>
       <span>Stand clear of the closing doors, please</span>
@@ -424,19 +436,16 @@ footer{margin:56px 16px 0;text-align:center;font-family:var(--f-mono);font-size:
       <div class="kv"><div class="k">Outbound</div><div class="v">VS9 · LHR T3 → JFK T4 · ~16:00 → 19:05</div></div>
       <div class="kv"><div class="k">Return</div><div class="v">VS10 · JFK T4 → LHR · ~21:00 → 08:55+1</div></div>
       <div class="kv"><div class="k">Hotel</div><div class="v">Romer Hell's Kitchen · 851 8th Ave · W 51st/52nd</div></div>
-      <div class="kv"><div class="k">Riders</div><div class="v">Lindsay · Gemma · Natalie · Adam · James · Tom</div></div>
+      <div class="kv"><div class="k">Riders</div><div class="v">Tom &amp; Gemma · James &amp; Lindsay · Adam &amp; Natalie</div></div>
       <div class="kv"><div class="k">Forecast</div><div class="v">5–10°C · Cold, clear, holiday season</div></div>
       <div class="kv"><div class="k">Base</div><div class="v">A/C/E at 50th St — 2 min from the hotel door</div></div>
     </div>
 
-    <div class="sec-head rv" style="margin-top:22px"><h2 style="font-size:clamp(18px,5vw,26px)">The Crew</h2><span class="k">Six riders · one train</span></div>
+    <div class="sec-head rv" style="margin-top:22px"><h2 style="font-size:clamp(18px,5vw,26px)">The Crew</h2><span class="k">Three couples · one train</span></div>
     <div class="crew rv">
-      <div class="cr"><span class="dot">L</span><b>Lindsay</b><span class="n">Rider 01</span></div>
-      <div class="cr"><span class="dot">G</span><b>Gemma</b><span class="n">Rider 02</span></div>
-      <div class="cr"><span class="dot">N</span><b>Natalie</b><span class="n">Rider 03</span></div>
-      <div class="cr"><span class="dot">A</span><b>Adam</b><span class="n">Rider 04</span></div>
-      <div class="cr"><span class="dot">J</span><b>James</b><span class="n">Rider 05</span></div>
-      <div class="cr"><span class="dot">T</span><b>Tom</b><span class="n">Rider 06</span></div>
+      <div class="cr couple"><span class="dots"><span class="dot">T</span><span class="dash"></span><span class="dot">G</span></span><b>Tom &amp; Gemma</b><span class="n">Couple 01 · Riders 01+02</span></div>
+      <div class="cr couple bday"><span class="bdaytag"><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.5l7.1-.6z"/></svg>Birthday</span><span class="dots"><span class="dot">J</span><span class="dash"></span><span class="dot">L</span></span><b>James &amp; Lindsay</b><span class="n">Couple 02 · The Birthday Boy</span></div>
+      <div class="cr couple"><span class="dots"><span class="dot">A</span><span class="dash"></span><span class="dot">N</span></span><b>Adam &amp; Natalie</b><span class="n">Couple 03 · Riders 05+06</span></div>
     </div>
 
     <div class="kiosk rv" role="timer" aria-label="Countdown to departure">
@@ -582,12 +591,12 @@ footer{margin:56px 16px 0;text-align:center;font-family:var(--f-mono);font-size:
             <span class="t">21:00</span><h3>Romer Hell's Kitchen · Check-in</h3>
             <span class="chev">▾</span>
           </div>
-          <div class="ntsign"><span class="lit"></span>Arrive ≈<b>21:00</b><span class="sep">·</span>Six rooms held from 15:00</div>
+          <div class="ntsign"><span class="lit"></span>Arrive ≈<b>21:00</b><span class="sep">·</span>Three rooms held from 15:00</div>
           <div class="detail"><div><div class="dbody">
             <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>30–45 min</b> — quick freshen-up</div></div>
             <div class="steps">
               <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Hotel at 851 8th Ave between W 51st &amp; 52nd — 9th Ave's bars are one block west</div></div>
-              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Straight to the desk — six rooms held from 15:00, keys and go</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Straight to the desk — three rooms held from 15:00, one per couple, keys and go</div></div>
             </div>
             <div class="stripmap" role="img" aria-label="Map: arriving at Romer Hell's Kitchen"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="62" height="18" rx="3"/><text class="sm-bt" x="14" y="21">AT VENUE</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-walk" cx="150" cy="52" r="24"/><circle class="sm-dst" cx="150" cy="28" r="3.5"/><circle class="sm-dst" cx="129" cy="64" r="3.5"/><circle class="sm-dst" cx="171" cy="64" r="3.5"/><text class="sm-ts" x="150" y="15" text-anchor="middle">8TH AVE</text><text class="sm-ts" x="88" y="56" text-anchor="end">9TH AVE</text><text class="sm-ts" x="212" y="56" text-anchor="start">W 51ST/52ND ST</text><text class="sm-ts" x="150" y="92" text-anchor="middle">HOTEL</text><use href="#sm-walker" x="144" y="45" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=John+F+Kennedy+International+Airport%2C+New+York&amp;daddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;dirflg=d" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=John+F+Kennedy+International+Airport%2C+New+York&amp;destination=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;travelmode=driving" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Decompress properly — showers, warm layers, phones on charge. A/C/E at 50th St is 2 min away for everything later in the week.</div>
           </div></div></div>
@@ -839,7 +848,7 @@ footer{margin:56px 16px 0;text-align:center;font-family:var(--f-mono);font-size:
               <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>551 Fifth Ave — the entrance is on E 45th St between 5th &amp; Madison</div></div>
               <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Inside the 1927 Art Deco Fred F. French Building, one block north of the Harvard Club · 15-min walk or 5-min cab from the hotel</div></div>
             </div>
-            <div class="stripmap" role="img" aria-label="Map: walk from the hotel to Morton's The Steakhouse"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">15 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="74" r="8"/><circle class="sm-orgd" cx="28" cy="74" r="3"/><circle class="sm-dst" cx="272" cy="30" r="8"/><path class="sm-walk" d="M36 74 H170 V30 H264"/><text class="sm-t" x="28" y="92">ROMER · 8TH AVE</text><text class="sm-t" x="284" y="40" text-anchor="end">MORTON'S · 45TH</text><text class="sm-t" x="160" y="66" text-anchor="end">E ON 50TH/51ST · S ON 5TH</text><use href="#sm-walker" x="60" y="52" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;daddr=Morton%27s+The+Steakhouse%2C+551+5th+Ave%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;destination=Morton%27s+The+Steakhouse%2C+551+5th+Ave%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Reservation for six is essential — call (212) 972-3315 well ahead. Steak for the table, martinis for the brave, early night after.</div>
+            <div class="stripmap" role="img" aria-label="Map: walk from the hotel to Morton's The Steakhouse"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">15 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="74" r="8"/><circle class="sm-orgd" cx="28" cy="74" r="3"/><circle class="sm-dst" cx="272" cy="30" r="8"/><path class="sm-walk" d="M36 74 H170 V30 H264"/><text class="sm-t" x="28" y="92">ROMER · 8TH AVE</text><text class="sm-t" x="284" y="40" text-anchor="end">MORTON'S · 45TH</text><text class="sm-t" x="160" y="66" text-anchor="end">E ON 50TH/51ST · S ON 5TH</text><use href="#sm-walker" x="60" y="52" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;daddr=Morton%27s+The+Steakhouse%2C+551+5th+Ave%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;destination=Morton%27s+The+Steakhouse%2C+551+5th+Ave%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Reservation for six is essential — call (212) 972-3315 well ahead, and mention James's birthday: steakhouses will usually put a candle in the dessert. Steak for the table, martinis for the brave, early night after.</div>
           </div></div></div>
         </div>
       </li>
@@ -1373,7 +1382,7 @@ footer{margin:56px 16px 0;text-align:center;font-family:var(--f-mono);font-size:
           <div class="detail"><div><div class="dbody">
             <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>30 min</b> — settle up and drop the bags</div></div>
             <div class="steps">
-              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Front desk by 11:00 — settle incidentals, close out the six rooms</div></div>
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Front desk by 11:00 — settle incidentals, close out the three rooms</div></div>
               <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Leave every bag with the concierge — standard NYC practice; wander hands-free, collect at 14:30</div></div>
             </div>
             <div class="stripmap" role="img" aria-label="Map: check-out at the hotel, bags with the concierge"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="62" height="18" rx="3"/><text class="sm-bt" x="14" y="21">AT VENUE</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-walk" cx="150" cy="52" r="24"/><circle class="sm-dst" cx="150" cy="28" r="3.5"/><circle class="sm-dst" cx="129" cy="64" r="3.5"/><circle class="sm-dst" cx="171" cy="64" r="3.5"/><text class="sm-ts" x="150" y="15" text-anchor="middle">8TH AVE</text><text class="sm-ts" x="88" y="56" text-anchor="end">9TH AVE</text><text class="sm-ts" x="212" y="56" text-anchor="start">W 51ST ST</text><text class="sm-ts" x="150" y="92" text-anchor="middle">CONCIERGE</text><use href="#sm-walker" x="144" y="45" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=9th+Ave+and+W+51st+St%2C+New+York&amp;daddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=9th+Ave+and+W+51st+St%2C+New+York&amp;destination=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Keep one warm layer and the chargers in a day bag — planes are cold and sockets are gold.</div>
@@ -1443,10 +1452,10 @@ footer{margin:56px 16px 0;text-align:center;font-family:var(--f-mono);font-size:
 </main>
 
 <footer>
-  <b>Last Update — 20 Sep 2026</b><br>
+  <b>Last Update — 20 Sep 2026</b> · James's birthday trip<br>
   Sources: venue &amp; box-office sites · MTA service info · Virgin Atlantic schedule · crew consensus<br>
   Winter-verified: VS9 ~16:00 → 19:05 · VS10 ~21:00 → 08:55+1 (exact minutes per booking) · TBC: Sunday's wander pick (High Line + Chelsea Market planned) · Saturday fork — default Option A until the crew votes<br>
-  Not affiliated with the MTA — obviously · Swipe ← → or use arrow keys to change days · Built for six riders
+  Not affiliated with the MTA — obviously · Swipe ← → or use arrow keys to change days · Built for James — three couples, three rooms
 </footer>
 
 <nav id="tabbar" aria-label="Trip navigation">
