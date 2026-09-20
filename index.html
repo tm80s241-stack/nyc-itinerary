@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NEW YORK CITY — Crew Itinerary · Nov 18–22 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=IBM+Plex+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#111214;
+  --paper:#fafaf7;
+  --tile:#ffffff;
+  --grout:rgba(17,18,20,.08);
+  --blue:#0039A6; --red:#EE352E; --yellow:#FCCC0A; --green:#00933C; --purple:#B933AD;
+  --kiosk:#FCCC0A;
+  --f-disp:"Archivo","HelveticaNeue-CondensedBold","Helvetica Neue",Helvetica,"Arial Narrow",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono","Courier New",monospace;
+  --sat:0px; --sab:0px;
+  --sat:env(safe-area-inset-top,0px); --sab:env(safe-area-inset-bottom,0px);
+  --rad:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--f-disp);
+  font-stretch:condensed;
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(var(--grout) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grout) 1px,transparent 1px),
+    linear-gradient(rgba(17,18,20,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(17,18,20,.045) 1px,transparent 1px);
+  background-size:96px 96px,96px 96px,24px 24px,24px 24px;
+  color:var(--ink);
+  padding-bottom:96px;
+  padding-bottom:calc(96px + var(--sab));
+  overflow-x:hidden;
+}
+::selection{background:var(--kiosk);color:var(--ink)}
+
+/* ---------- TYPE ---------- */
+h1,h2,h3,.disp{font-stretch:condensed;font-weight:800;letter-spacing:.01em;text-transform:uppercase}
+.mono{font-family:var(--f-mono);letter-spacing:.04em}
+
+/* ---------- PROGRESS ---------- */
+#progress{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;height:6px;padding-top:0;padding-top:var(--sat);background:var(--ink)}
+#progress .seg{flex:1;height:100%;position:relative;margin-right:2px;background:rgba(255,255,255,.18);overflow:hidden}
+#progress .seg:last-child{margin-right:0}
+#progress .seg i{position:absolute;top:0;left:0;right:0;bottom:0;inset:0;transform-origin:left;transform:scaleX(0);display:block}
+
+/* ---------- MASTHEAD ---------- */
+header.masthead{padding:18px 16px 0;padding:calc(18px + var(--sat)) 16px 0}
+.station-sign{
+  background:var(--tile);border:3px solid var(--ink);border-radius:4px;
+  box-shadow:8px 8px 0 rgba(17,18,20,.9);max-width:720px;margin:0 auto;overflow:hidden;
+}
+.sign-tiles{padding:18px 18px 14px;border-bottom:3px solid var(--ink);
+  background-image:linear-gradient(var(--grout) 1px,transparent 1px),linear-gradient(90deg,var(--grout) 1px,transparent 1px);
+  background-size:22px 22px;background-color:var(--tile);
+}
+.sign-tiles .over{font-size:clamp(10px,2.6vw,12px);font-weight:700;letter-spacing:.42em;text-transform:uppercase}
+.sign-tiles h1{font-size:clamp(38px,11vw,84px);line-height:.92;margin-top:6px}
+.sign-tiles h1 em{font-style:normal;box-shadow:inset 0 -0.28em 0 var(--kiosk)}
+.sign-band{background:var(--ink);color:#fff;padding:12px 18px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.sign-band .bullets{display:flex;gap:4px}
+.sign-band .lbl{font-size:clamp(11px,3vw,14px);font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+.sign-band .lbl b{color:var(--kiosk)}
+
+/* route bullets */
+.bl{display:inline-grid;place-items:center;border-radius:50%;color:#fff;font-weight:800;
+  font-stretch:normal;line-height:1;-webkit-user-select:none;user-select:none;flex:none}
+.bl.wide{border-radius:999px}
+.bl.sm{width:22px;height:22px;font-size:12px}
+.bl.md{width:30px;height:30px;font-size:15px}
+.bl.lg{width:46px;height:46px;font-size:22px}
+.bl.bc-blue{background:var(--blue)} .bl.bc-red{background:var(--red)}
+.bl.bc-yellow{background:var(--yellow);color:var(--ink)} .bl.bc-green{background:var(--green)}
+.bl.bc-purple{background:var(--purple)} .bl.bc-black{background:var(--ink)}
+
+/* ---------- TICKER ---------- */
+.ticker{margin:14px auto 0;max-width:720px;background:var(--ink);color:#fff;overflow:hidden;
+  border-left:10px solid var(--kiosk);display:flex;align-items:center;height:34px}
+.ticker .tag{background:var(--kiosk);color:var(--ink);font-weight:800;font-size:11px;letter-spacing:.2em;
+  padding:0 10px;height:100%;display:flex;align-items:center;flex:none}
+.ticker .roll{white-space:nowrap;display:flex;gap:0;animation:roll 26s linear infinite;font-family:var(--f-mono);
+  font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.ticker .roll span{padding:0 26px;position:relative}
+.ticker .roll span::after{content:"";position:absolute;right:0;top:50%;width:6px;height:6px;background:var(--kiosk);transform:translateY(-50%) rotate(45deg)}
+@keyframes roll{to{transform:translateX(-50%)}}
+
+/* ---------- SECTIONS ---------- */
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+section{margin-top:44px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin:0 0 6px}
+.sec-head h2{font-size:clamp(24px,6.4vw,40px)}
+.sec-head .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;opacity:.55}
+.rule{height:3px;background:var(--ink);margin:8px 0 18px;position:relative}
+.rule::after{content:"";position:absolute;right:0;top:-4px;width:11px;height:11px;background:var(--ink);transform:rotate(45deg)}
+
+/* reveal: visible by default; pre-animation hidden states apply only when JS is running (.js on <html>) */
+.rv{transition:opacity .6s ease,transform .6s ease}
+.js .rv{opacity:0;transform:translateY(22px)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ---------- PANELS ---------- */
+.panel{background:var(--tile);border:2px solid var(--ink);border-radius:var(--rad);padding:16px;position:relative;
+  box-shadow:5px 5px 0 rgba(17,18,20,.14)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kv{border:1.5px solid var(--ink);border-radius:10px;padding:10px 12px;background:var(--paper)}
+.kv .k{font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;opacity:.55}
+.kv .v{font-size:clamp(14px,3.8vw,17px);font-weight:800;text-transform:uppercase;margin-top:3px;line-height:1.15}
+@media (max-width:420px){.grid2{grid-template-columns:1fr}}
+
+/* ---------- CREW ---------- */
+.crew{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cr{background:var(--paper);border:1.5px solid var(--ink);border-radius:10px;padding:12px 6px 10px;text-align:center}
+.cr .dot{width:40px;height:40px;margin:0 auto;border-radius:50%;border:2.5px solid var(--ink);background:var(--tile);
+  display:grid;place-items:center;font-weight:800;font-size:15px;letter-spacing:0}
+.cr b{display:block;margin-top:7px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.cr .n{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.3em;opacity:.5;margin-top:2px}
+@media (min-width:520px){.crew{grid-template-columns:repeat(6,1fr)}}
+
+/* countdown kiosk */
+.kiosk{margin-top:14px;background:var(--ink);color:var(--kiosk);border:2px solid var(--ink);border-radius:var(--rad);
+  padding:16px 16px 14px;box-shadow:5px 5px 0 rgba(252,204,10,.85)}
+.kiosk .klabel{font-size:11px;font-weight:800;letter-spacing:.34em;text-transform:uppercase;color:#fff;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.kiosk .cd{display:flex;gap:8px;margin-top:10px}
+.kiosk .unit{flex:1;text-align:center;border:1.5px solid rgba(252,204,10,.5);border-radius:10px;padding:8px 4px 6px}
+.kiosk .unit b{display:block;font-family:var(--f-mono);font-size:clamp(22px,7vw,34px);line-height:1;font-weight:700}
+.kiosk .unit span{font-size:9px;letter-spacing:.3em;font-weight:700}
+.kiosk .sub{margin-top:10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:#fff;opacity:.8;text-transform:uppercase}
+
+/* ---------- SERVICE NOTICES ---------- */
+.notice{background:var(--kiosk);border:2px solid var(--ink);border-radius:var(--rad);padding:12px 14px;margin-top:12px;
+  display:flex;gap:12px;align-items:flex-start;box-shadow:4px 4px 0 rgba(17,18,20,.9)}
+.notice .ex{flex:none;width:34px;height:34px;border:2.5px solid var(--ink);border-radius:50%;display:grid;place-items:center;
+  font-weight:900;font-size:20px;background:var(--tile)}
+.notice .nt{font-size:10px;font-weight:800;letter-spacing:.3em;text-transform:uppercase}
+.notice .nb{font-size:clamp(13px,3.6vw,15px);font-weight:700;line-height:1.3;margin-top:2px}
+.notice.ok .ex{background:var(--green);color:#fff}
+.notice.tbc{background:var(--tile);border:2px dashed var(--purple);box-shadow:4px 4px 0 rgba(185,51,173,.4)}
+.notice.tbc .ex{background:var(--purple);color:#fff;border-color:var(--purple)}
+
+/* ---------- ROUTE MAP OVERVIEW ---------- */
+.mapcard{background:var(--tile);border:2px solid var(--ink);border-radius:var(--rad);padding:8px 14px 14px;box-shadow:5px 5px 0 rgba(17,18,20,.14)}
+.maprow{display:flex;align-items:center;gap:0;min-height:64px;cursor:pointer;color:inherit;text-decoration:none;
+  border-bottom:1px dashed rgba(17,18,20,.25);padding:6px 0}
+.maprow:last-child{border-bottom:none}
+.maprow .rail{width:34px;align-self:stretch;position:relative;flex:none}
+.maprow .rail::before{content:"";position:absolute;left:50%;top:-8px;bottom:-8px;width:6px;transform:translateX(-50%);background:var(--ink)}
+.maprow:first-child .rail::before{top:50%}
+.maprow:last-child .rail::before{bottom:50%}
+.maprow .rail b{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;
+  background:var(--c);color:#fff;border:3px solid var(--tile);box-shadow:0 0 0 2px var(--ink);z-index:2;
+  display:grid;place-items:center;font-size:13px;font-weight:800}
+.maprow.yellow .rail b{color:var(--ink)}
+.maprow .mi{flex:1;min-width:0;padding:0 10px}
+.maprow .mi .d{font-size:clamp(16px,4.6vw,20px);font-weight:800;text-transform:uppercase;line-height:1.05}
+.maprow .mi .s{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-top:2px}
+.maprow .go{flex:none;display:flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.24em}
+.maprow .go .arw{width:26px;height:26px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;background:var(--paper)}
+.maprow:active .go .arw{background:var(--kiosk)}
+
+/* junction glyph (pure CSS "Y"): trunk + two branches */
+.jg{display:inline-block;width:18px;height:18px;position:relative;vertical-align:-4px;margin-right:6px}
+.jg::before{content:"";position:absolute;left:50%;top:0;width:3.5px;height:40%;background:var(--ink);border-radius:2px;transform:translateX(-50%)}
+.jg i{position:absolute;left:50%;top:36%;width:3.5px;height:68%;background:var(--ink);border-radius:2px;transform-origin:top center}
+.jg i.b1{transform:rotate(34deg)}
+.jg i.b2{transform:rotate(-34deg)}
+
+/* ---------- DAY ---------- */
+#map,.day{scroll-margin-top:16px}
+.day-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.day-head .big{display:flex;gap:5px}
+.day-head h2{font-size:clamp(30px,8.6vw,52px);line-height:.95;flex:1;min-width:0}
+.day-head .date{font-family:var(--f-mono);font-size:clamp(11px,3vw,13px);letter-spacing:.2em;text-transform:uppercase;
+  background:var(--ink);color:#fff;padding:6px 10px;transform:rotate(-1.5deg)}
+.day-sub{font-size:clamp(13px,3.8vw,16px);font-weight:600;text-transform:uppercase;letter-spacing:.06em;opacity:.7;margin:4px 0 0}
+
+/* the line */
+.line{list-style:none;margin-top:20px;position:relative}
+.line::before{content:"";position:absolute;left:21px;top:8px;bottom:8px;width:7px;transform:translateX(-50%);
+  background:var(--c);border-radius:4px;box-shadow:0 0 0 1.5px rgba(17,18,20,.15)}
+.stop{position:relative;padding:0 0 22px 52px}
+.stop:last-child{padding-bottom:4px}
+.node{position:absolute;left:21px;top:2px;transform:translateX(-50%);width:26px;height:26px;border-radius:50%;
+  background:var(--c);border:4px solid var(--paper);box-shadow:0 0 0 2.5px var(--ink);z-index:2}
+.stop.transfer .node{background:var(--paper);border-color:var(--paper);box-shadow:0 0 0 2.5px var(--ink)}
+.stop.transfer .node::after{content:"";position:absolute;top:6px;left:6px;right:6px;bottom:6px;inset:6px;border-radius:50%;background:var(--ink)}
+.stop.plane .node{background:var(--ink)}
+.stop.plane .node::after{content:"";position:absolute;top:5px;left:5px;right:5px;bottom:5px;inset:5px;border-radius:50%;
+  background:conic-gradient(var(--kiosk) 0 25%,transparent 25% 50%,var(--kiosk) 50% 75%,transparent 75%)}
+
+/* stop card */
+.card{background:var(--tile);border:2px solid var(--ink);border-radius:var(--rad);overflow:hidden;
+  box-shadow:4px 4px 0 rgba(17,18,20,.14);transition:box-shadow .25s ease}
+.stop.open .card{box-shadow:6px 6px 0 rgba(17,18,20,.28)}
+.card.tbc{border-style:dashed;border-color:var(--purple);box-shadow:4px 4px 0 rgba(185,51,173,.35)}
+.card.tbc::before{content:"";display:block;height:8px;
+  background:repeating-linear-gradient(-45deg,var(--purple) 0 8px,var(--tile) 8px 16px)}
+.chip{position:absolute;left:52px;top:-9px;z-index:3;font-family:var(--f-mono);font-size:10px;font-weight:700;
+  letter-spacing:.16em;background:var(--ink);color:var(--kiosk);padding:3px 8px;border-radius:3px;text-transform:uppercase}
+.stop.transfer .chip{color:#fff}
+.chip.warn{background:var(--kiosk);color:var(--ink)}
+.chip.tbc{background:var(--purple);color:#fff}
+.card-head{display:flex;align-items:center;gap:10px;padding:13px 14px;cursor:pointer;min-height:56px}
+.card.tbc .card-head{padding-top:11px}
+.card-head .t{font-family:var(--f-mono);font-weight:700;font-size:clamp(13px,3.8vw,15px);flex:none;
+  border:2px solid var(--ink);border-radius:6px;padding:4px 7px;background:var(--paper)}
+.card-head h3{flex:1;font-size:clamp(17px,5vw,22px);line-height:1.02}
+.card-head .chev{flex:none;width:30px;height:30px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;
+  transition:transform .3s ease,background .3s ease;background:var(--paper)}
+.stop.open .chev{transform:rotate(180deg);background:var(--kiosk)}
+.card-head:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+/* next-train sign */
+.ntsign{display:flex;align-items:center;gap:8px;margin:0 14px 12px;background:var(--ink);color:#fff;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  padding:7px 10px;border-radius:6px;border-left:8px solid var(--kiosk);overflow:hidden}
+.ntsign .lit{width:8px;height:8px;border-radius:50%;background:var(--kiosk);flex:none;animation:blink 1.4s steps(2) infinite}
+@keyframes blink{50%{opacity:.15}}
+.ntsign .sep{opacity:.4}
+.ntsign b{color:var(--kiosk)}
+
+/* detail expand: expanded by default so all content shows without JS; JS collapses for tap-to-open */
+.detail{display:grid;grid-template-rows:1fr;transition:grid-template-rows .38s cubic-bezier(.4,0,.2,1)}
+.js .detail{grid-template-rows:0fr}
+.stop.open .detail{grid-template-rows:1fr}
+.detail>div{overflow:hidden}
+.dbody{border-top:2px dashed rgba(17,18,20,.3);padding:12px 14px 14px;display:grid;gap:10px}
+.drow{display:flex;gap:10px;font-size:14px;line-height:1.45}
+.drow .ic{flex:none;width:26px;height:26px;border:1.5px solid var(--ink);border-radius:7px;display:grid;place-items:center;background:var(--paper)}
+.drow .lab{font-size:9px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;opacity:.55;display:block;margin-bottom:2px}
+.drow b{font-weight:800}
+.step-n{flex:none;width:20px;height:20px;border-radius:50%;background:var(--c);color:#fff;font-size:11px;font-weight:800;
+  display:grid;place-items:center;margin-top:1px}
+.steps{display:grid;gap:6px}
+.steps .drow{padding-left:2px}
+.note{background:var(--paper);border:1.5px solid var(--ink);border-radius:10px;padding:9px 11px;font-size:13.5px;line-height:1.45}
+.note b{display:block;font-size:9px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:3px}
+.note.tbc{border-style:dashed;border-color:var(--purple)}
+
+/* day terminus */
+.term{display:flex;align-items:center;gap:10px;margin:6px 0 0 52px;background:var(--ink);color:#fff;
+  padding:9px 12px;border-radius:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.term i{width:9px;height:9px;border-radius:50%;background:var(--kiosk);flex:none}
+
+/* ---------- FORK DAY ---------- */
+.forktoggle{display:none}
+.js .forktoggle{display:block;background:var(--tile);border:2px solid var(--ink);border-radius:var(--rad);
+  padding:12px 14px 12px;margin-top:20px;box-shadow:5px 5px 0 rgba(17,18,20,.14)}
+.ft-rails{position:relative;height:28px;margin:0 12%}
+.ft-rails .trunk{position:absolute;left:50%;top:0;width:6px;height:15px;transform:translateX(-50%);background:var(--ink);border-radius:3px}
+.ft-rails .br{position:absolute;left:50%;top:12px;width:min(26vw,140px);height:6px;background:var(--ink);border-radius:3px;transform-origin:left center}
+.ft-rails .b1{transform:rotate(24deg)}
+.ft-rails .b2{transform:rotate(156deg)}
+.ft-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.ft-btns button{-webkit-appearance:none;appearance:none;font-family:var(--f-disp);text-align:left;cursor:pointer;
+  border:2px solid var(--ink);border-radius:10px;background:var(--paper);padding:10px 12px;min-height:60px;
+  transition:transform .15s ease,background .2s ease,color .2s ease}
+.ft-btns button b{display:block;font-size:clamp(14px,4vw,18px);font-weight:800;text-transform:uppercase;line-height:1.05;letter-spacing:.02em}
+.ft-btns button span{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-top:3px}
+.ft-btns button[aria-pressed="true"]{background:var(--green);color:#fff;box-shadow:3px 3px 0 rgba(17,18,20,.9)}
+.ft-btns button[aria-pressed="true"] span{opacity:.95}
+.ft-btns button:active{transform:scale(.97)}
+.ft-btns button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.ft-state{margin-top:10px;font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;opacity:.85}
+.ft-state b{color:var(--green)}
+
+/* fork labels: visible only without JS (JS swaps timelines via the toggle instead) */
+.fork-label{margin:20px 0 0;font-family:var(--f-mono);font-size:11px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;background:var(--ink);color:var(--kiosk);padding:8px 12px;border-radius:6px}
+.js .fork-label{display:none}
+/* forks: both shown without JS; JS shows exactly one, per #day4[data-fork] */
+.js .fork{display:none}
+.js #day4[data-fork="a"] .fork-a{display:block}
+.js #day4[data-fork="b"] .fork-b{display:block}
+
+/* ---------- TAB BAR ---------- */
+#tabbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--ink);
+  padding:10px;padding-bottom:calc(10px + var(--sab));display:flex;gap:6px;justify-content:center;
+  border-top:3px solid #000}
+#tabbar .tbn{-webkit-appearance:none;appearance:none;border:2px solid rgba(255,255,255,.25);background:transparent;color:#fff;
+  flex:1 1 0;min-width:0;max-width:68px;min-height:52px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:3px;font-family:var(--f-disp);text-decoration:none;
+  transition:transform .2s ease,border-color .2s ease,background .2s ease;padding:4px 2px}
+#tabbar .tbn .bl{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+#tabbar .tbn .tl{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;opacity:.8}
+#tabbar .tbn[aria-selected="true"]{border-color:var(--kiosk);background:rgba(255,255,255,.08)}
+#tabbar .tbn[aria-selected="true"] .bl{transform:scale(1.18);box-shadow:0 0 0 2.5px var(--paper)}
+#tabbar .tbn:active{transform:scale(.94)}
+#tabbar .tbn:focus-visible{outline:3px solid var(--kiosk);outline-offset:2px}
+
+footer{margin:56px 16px 0;text-align:center;font-family:var(--f-mono);font-size:10px;letter-spacing:.24em;
+  text-transform:uppercase;opacity:.55;line-height:2}
+
+/* older-WebKit longhand fallbacks (place-items shorthand needs Safari 14.1+) */
+.bl,.notice .ex,.maprow .rail b,.maprow .go .arw,.card-head .chev,.drow .ic,.step-n{align-items:center;justify-items:center}
+
+/* landscape tweaks */
+@media (orientation:landscape) and (max-height:520px){
+  body{padding-bottom:84px;padding-bottom:calc(84px + var(--sab))}
+  .sign-tiles h1{font-size:clamp(30px,7vw,54px)}
+  .wrap{max-width:640px}
+}
+@media (min-width:900px){
+  .wrap,header.masthead .station-sign,.ticker{max-width:780px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
+
+/* ---------- STRIP MAPS (static inline SVG) ---------- */
+.stripmap{position:relative;background-color:var(--tile);border:2px solid var(--ink);border-radius:10px;overflow:hidden;
+  box-shadow:3px 3px 0 rgba(17,18,20,.14);
+  background-image:linear-gradient(var(--grout) 1px,transparent 1px),linear-gradient(90deg,var(--grout) 1px,transparent 1px);
+  background-size:22px 22px}
+.stripmap.tbc{border-style:dashed;border-color:var(--purple);box-shadow:3px 3px 0 rgba(185,51,173,.35)}
+.stripmap svg{display:block;width:100%;height:auto}
+.nts{position:absolute;top:3px;left:50%;transform:translateX(-50%);background:var(--tile);border:1.5px solid var(--ink);
+  border-radius:3px;padding:1px 6px;font-family:var(--f-mono);font-size:8px;font-weight:700;letter-spacing:.18em;opacity:.9}
+.sm-ride{fill:none;stroke:var(--c);stroke-width:8;stroke-linecap:round}
+.sm-walk{fill:none;stroke:var(--ink);stroke-width:3;stroke-dasharray:7 6;stroke-linecap:round;stroke-linejoin:round}
+.sm-walkf{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.sm-air{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-dasharray:6 6;stroke-linecap:round}
+.sm-org{fill:#fff;stroke:var(--ink);stroke-width:2.5}
+.sm-orgd{fill:var(--ink)}
+.sm-dst{fill:var(--ink)}
+.sm-stk{stroke:#fff;stroke-width:2.5;stroke-linecap:round}
+.sm-t{fill:var(--ink);font-family:var(--f-mono);font-weight:700;font-size:11px;letter-spacing:.04em}
+.sm-ts{fill:var(--ink);opacity:.55;font-family:var(--f-mono);font-size:9px;letter-spacing:.04em}
+.sm-tw{fill:#fff}
+.sm-bdg{fill:var(--ink)}
+.sm-bt{fill:var(--kiosk);font-family:var(--f-mono);font-weight:700;font-size:10px;letter-spacing:.06em}
+.sm-arrow{fill:var(--ink)}
+.mlnks{display:flex;gap:8px;flex-wrap:wrap}
+.mlnk{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;background:var(--ink);color:#fff;
+  border:2px solid var(--ink);border-radius:999px;text-decoration:none;font-weight:800;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;box-shadow:2px 2px 0 rgba(17,18,20,.25)}
+.mlnk i{width:10px;height:10px;border-radius:50%;background:var(--c,var(--kiosk));flex:none}
+.mlnk:active{transform:scale(.96);box-shadow:none}
+.mlnk:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+/* ---------- PREVIEW-MODE ADVISORY (shows only when JS is off, e.g. Quick Look) ---------- */
+.openbannercheck{position:absolute;top:0;left:-9999px;width:1px;height:1px;opacity:0}
+.openbanner{position:relative;z-index:61;background:var(--kiosk);border-bottom:3px solid var(--ink);
+  display:flex;align-items:center;gap:12px;padding:8px 52px 8px 14px;padding:calc(8px + var(--sat)) 52px 8px 14px;min-height:52px}
+.js .openbanner{display:none}
+#openbannercheck:checked ~ .openbanner{display:none}
+#openbannercheck:focus-visible ~ .openbanner .ob-x{outline:3px solid var(--blue);outline-offset:2px}
+.ob-dia{flex:none;width:32px;height:32px;border:2.5px solid var(--ink);background:var(--tile);transform:rotate(45deg);
+  display:grid;place-items:center;box-shadow:2px 2px 0 rgba(17,18,20,.35)}
+.ob-dia i{transform:rotate(-45deg);font-style:normal;font-weight:900;font-size:17px;line-height:1}
+.ob-txt b{display:block;font-size:clamp(12px,3.6vw,15px);font-weight:800;letter-spacing:.06em;text-transform:uppercase;line-height:1.15}
+.ob-txt span{display:block;font-size:clamp(11px,3.2vw,13px);font-weight:600;line-height:1.25;margin-top:1px}
+.ob-txt .ob-sub{opacity:.65;font-size:clamp(10px,3vw,11px);letter-spacing:.04em}
+.ob-x{position:absolute;top:50%;right:6px;transform:translateY(-50%);width:44px;height:44px;
+  display:grid;place-items:center;border:2px solid var(--ink);border-radius:50%;background:var(--tile);
+  font-weight:900;font-size:16px;line-height:1;cursor:pointer;-webkit-user-select:none;user-select:none}
+.ob-x:active{background:var(--ink);color:var(--kiosk)}
+.ob-dia,.ob-x{align-items:center;justify-items:center}
+</style>
+</head>
+<body>
+<input type="checkbox" id="openbannercheck" class="openbannercheck" aria-label="Dismiss preview-mode advisory">
+<div class="openbanner">
+  <span class="ob-dia" aria-hidden="true"><i>!</i></span>
+  <div class="ob-txt">
+    <b>Service Advisory — You're in Preview Mode</b>
+    <span>For the live countdown, maps &amp; swipe navigation: tap <b>Share</b> (square with arrow), then <b>Open in Safari</b>.</span>
+    <span class="ob-sub">Everything below still works — scroll on.</span>
+  </div>
+  <label for="openbannercheck" class="ob-x" aria-label="Dismiss advisory">✕</label>
+</div>
+
+<div id="progress" aria-hidden="true">
+  <span class="seg"><i style="background:var(--blue)"></i></span>
+  <span class="seg"><i style="background:var(--red)"></i></span>
+  <span class="seg"><i style="background:var(--yellow)"></i></span>
+  <span class="seg"><i style="background:var(--green)"></i></span>
+  <span class="seg"><i style="background:var(--purple)"></i></span>
+</div>
+
+<header class="masthead">
+  <div class="station-sign rv">
+    <div class="sign-tiles">
+      <div class="over">New York City Transit · Official Crew Itinerary</div>
+      <h1>New<br><em>York</em></h1>
+    </div>
+    <div class="sign-band">
+      <span class="bullets">
+        <span class="bl sm bc-blue">A</span><span class="bl sm bc-blue">C</span><span class="bl sm bc-blue">E</span>
+        <span class="bl sm bc-red">1</span><span class="bl sm bc-red">2</span><span class="bl sm bc-red">3</span>
+        <span class="bl sm bc-yellow">N</span><span class="bl sm bc-yellow">Q</span><span class="bl sm bc-yellow">R</span>
+        <span class="bl sm bc-green">4</span><span class="bl sm bc-green">5</span><span class="bl sm bc-green">6</span>
+        <span class="bl sm bc-purple">7</span>
+      </span>
+      <span class="lbl">851 8th Ave · <b>Nov 18–22 2026</b></span>
+    </div>
+  </div>
+  <div class="ticker rv" aria-hidden="true">
+    <span class="tag">LIVE</span>
+    <div class="roll" id="tickerRoll">
+      <span>VS9 departs LHR T3 at 11:20 on Wed 18 Nov — see the countdown board below</span>
+      <span>6 riders: Lindsay · Gemma · Natalie · Adam · James · Tom</span>
+      <span>Book ahead: The Rink · 9/11 Museum · Chicago · Knicks · club guest lists</span>
+      <span>Weather 5–10°C · Winter Village open · Radio City Spectacular running</span>
+      <span>Stand clear of the closing doors, please</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- TRIP INFO -->
+  <section id="info" aria-label="Trip information">
+    <div class="sec-head rv"><h2>Station Info</h2><span class="k">Fig 01</span></div>
+    <div class="rule rv"></div>
+    <div class="grid2 rv">
+      <div class="kv"><div class="k">Outbound</div><div class="v">VS9 · LHR T3 → JFK T4 · 11:20 → 14:05</div></div>
+      <div class="kv"><div class="k">Return</div><div class="v">VS10 · JFK T4 → LHR · 18:30 → 06:45</div></div>
+      <div class="kv"><div class="k">Hotel</div><div class="v">Romer Hell's Kitchen · 851 8th Ave · W 51st/52nd</div></div>
+      <div class="kv"><div class="k">Riders</div><div class="v">Lindsay · Gemma · Natalie · Adam · James · Tom</div></div>
+      <div class="kv"><div class="k">Forecast</div><div class="v">5–10°C · Cold, clear, holiday season</div></div>
+      <div class="kv"><div class="k">Base</div><div class="v">A/C/E at 50th St — 2 min from the hotel door</div></div>
+    </div>
+
+    <div class="sec-head rv" style="margin-top:22px"><h2 style="font-size:clamp(18px,5vw,26px)">The Crew</h2><span class="k">Six riders · one train</span></div>
+    <div class="crew rv">
+      <div class="cr"><span class="dot">L</span><b>Lindsay</b><span class="n">Rider 01</span></div>
+      <div class="cr"><span class="dot">G</span><b>Gemma</b><span class="n">Rider 02</span></div>
+      <div class="cr"><span class="dot">N</span><b>Natalie</b><span class="n">Rider 03</span></div>
+      <div class="cr"><span class="dot">A</span><b>Adam</b><span class="n">Rider 04</span></div>
+      <div class="cr"><span class="dot">J</span><b>James</b><span class="n">Rider 05</span></div>
+      <div class="cr"><span class="dot">T</span><b>Tom</b><span class="n">Rider 06</span></div>
+    </div>
+
+    <div class="kiosk rv" role="timer" aria-label="Countdown to departure">
+      <div class="klabel"><span>Countdown</span><span>Boarding · Wed 18 Nov 2026</span></div>
+      <div class="cd">
+          <div class="unit"><b id="cdD">18</b><span id="cdDl">DAY</span></div>
+        <div class="unit"><b id="cdH">NOV</b><span id="cdHl">MONTH</span></div>
+        <div class="unit"><b id="cdM">2026</b><span id="cdMl">YEAR</span></div>
+        <div class="unit"><b id="cdS">WED</b><span id="cdSl">WEEKDAY</span></div>
+      </div>
+      <div class="sub">This is a downtown-bound trip. All connections guaranteed.</div>
+    </div>
+
+    <div class="notice ok rv" role="note">
+      <span class="ex">✓</span>
+      <div><div class="nt">Good Service · Flights Confirmed</div>
+      <div class="nb">VS9 out Wed 18 Nov — LHR T3 11:20, lands JFK T4 14:05. VS10 home Sun 22 Nov — JFK T4 18:30, lands LHR 06:45 Mon. Daytime flight out, red-eye back.</div></div>
+    </div>
+    <div class="notice ok rv" role="note">
+      <span class="ex">✓</span>
+      <div><div class="nt">Good Service · Weather</div>
+      <div class="nb">Cold but clear all five days (5–10°C) — pack proper coats. Holiday season is starting: Bryant Park Winter Village is open, store windows are unwrapped, and the Radio City Christmas Spectacular is running.</div></div>
+    </div>
+    <div class="notice rv" role="note">
+      <span class="ex">!</span>
+      <div><div class="nt">Service Notice · Book Ahead</div>
+      <div class="nb">Book before the trip: The Rink at Rockefeller Center · 9/11 Museum timed tickets · Morton's reservation for six · Chicago tickets · Knicks tickets · Saturday club guest lists.</div></div>
+    </div>
+  </section>
+
+  <!-- ROUTE MAP OVERVIEW -->
+  <section id="map" aria-label="Route map overview">
+    <div class="sec-head rv"><h2>Route Map</h2><span class="k">Fig 02</span></div>
+    <div class="rule rv"></div>
+    <div class="mapcard rv" id="mapcard">
+      <a class="maprow" data-day="0" style="--c:var(--blue)" href="#day1" aria-label="Jump to Day 1">
+        <div class="rail"><b>1</b></div>
+        <div class="mi"><div class="d">Day 1 · Arrival</div><div class="s">JFK → Hell's Kitchen · 9th Ave crawl</div></div>
+        <div class="go"><span class="arw">→</span></div>
+      </a>
+      <a class="maprow" data-day="1" style="--c:var(--red)" href="#day2" aria-label="Jump to Day 2">
+        <div class="rail"><b>2</b></div>
+        <div class="mi"><div class="d">Day 2 · Midtown Icons</div><div class="s">St Patrick's · Central Park · The Rink · Morton's</div></div>
+        <div class="go"><span class="arw">→</span></div>
+      </a>
+      <a class="maprow yellow" data-day="2" style="--c:var(--yellow)" href="#day3" aria-label="Jump to Day 3">
+        <div class="rail"><b>3</b></div>
+        <div class="mi"><div class="d">Day 3 · Downtown</div><div class="s">9/11 Memorial &amp; Museum · Liberty cruise · Chinatown</div></div>
+        <div class="go"><span class="arw">→</span></div>
+      </a>
+      <a class="maprow" data-day="3" style="--c:var(--green)" href="#day4" aria-label="Jump to Day 4">
+        <div class="rail"><b>4</b></div>
+        <div class="mi"><div class="d">Day 4 · Choose Your Line</div><div class="s"><span class="jg" aria-hidden="true"><i class="b1"></i><i class="b2"></i></span>Two services diverge — Balls &amp; Broadway / Shop &amp; Dance</div></div>
+        <div class="go"><span class="arw">→</span></div>
+      </a>
+      <a class="maprow" data-day="4" style="--c:var(--purple)" href="#day5" aria-label="Jump to Day 5">
+        <div class="rail"><b>5</b></div>
+        <div class="mi"><div class="d">Day 5 · Home</div><div class="s">Breakfast · bags-free High Line · VS10 18:30</div></div>
+        <div class="go"><span class="arw">→</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= DAY 1 ================= -->
+  <section class="day" id="day1" style="--c:var(--blue)" aria-label="Day 1">
+    <div class="sec-head rv"><h2>Day 1</h2><span class="k">A · C · E Line</span></div>
+    <div class="rule rv"></div>
+    <div class="day-head rv">
+      <span class="big"><span class="bl lg bc-blue">A</span><span class="bl lg bc-blue">C</span><span class="bl lg bc-blue">E</span></span>
+      <h2>Arrival</h2>
+      <span class="date">Wed 18 Nov</span>
+    </div>
+    <p class="day-sub rv">8th Avenue local · JFK inbound · easy first night on 9th Ave</p>
+
+    <div class="notice ok rv" role="note">
+      <span class="ex">✓</span>
+      <div><div class="nt">Good Service · Flights Confirmed</div>
+      <div class="nb">VS9 lands JFK T4 at 14:05 — cab rank by ~15:15, hotel ≈16:00–16:30. From there, Day 1 runs on the clock.</div></div>
+    </div>
+
+    <ol class="line">
+      <li class="stop plane rv">
+        <span class="chip">Daytime Flight</span><span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">11:20</span><h3>VS9 · LHR T3 → JFK T4</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Departs LHR T3 <b>11:20</b><span class="sep">·</span>Lands JFK T4 14:05 local</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>7 hr 45</b> — daytime flight, watch three films, land running</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Be at Heathrow T3 by ~08:30 (3 hrs before) — bags dropped, breakfast airside</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Land JFK T4 at 14:05 — immigration &amp; bags ≈45–60 min, then follow Ground Transportation signs</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: VS9 daytime flight from London Heathrow to JFK"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><defs><symbol id="sm-walker" viewBox="0 0 12 18"><circle cx="6" cy="2.6" r="2.4" fill="#111214"/><path d="M6 5.6 V11 M6 7.2 L2.6 9.6 M6 7.2 L9.4 9.6 M6 11 L3.6 16.4 M6 11 L8.4 16.4" fill="none" stroke="#111214" stroke-width="1.6" stroke-linecap="round"/></symbol><symbol id="sm-plane" viewBox="0 0 16 16"><path d="M1 8 L15 3 L10 8 L15 13 Z" fill="#111214"/></symbol></defs><rect class="sm-bdg" x="8" y="8" width="128" height="18" rx="3"/><text class="sm-bt" x="14" y="21">DAY FLIGHT · 7H 45M</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="32" cy="66" r="8"/><circle class="sm-orgd" cx="32" cy="66" r="3"/><circle class="sm-dst" cx="268" cy="66" r="8"/><path class="sm-air" d="M40 66 Q150 18 260 66"/><use href="#sm-plane" x="142" y="24" width="16" height="16"/><text class="sm-t" x="32" y="88">LHR</text><text class="sm-t" x="268" y="88" text-anchor="end">JFK</text></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=London+Heathrow+Airport+Terminal+3&amp;daddr=John+F+Kennedy+International+Airport%2C+New+York&amp;dirflg=r" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=London+Heathrow+Airport+Terminal+3&amp;destination=John+F+Kennedy+International+Airport%2C+New+York&amp;travelmode=transit" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Passports + ESTA confirmations in one phone note. Tom holds the six boarding passes.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop transfer rv">
+        <span class="chip">Transfer · Taxi</span><span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">15:15</span><h3>Yellow Cab · JFK → Manhattan</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Cab rank ~<b>15:15</b><span class="sep">·</span>Hotel ≈16:00–16:30<span class="sep">·</span>Flat fare + tolls</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>45–75 min</b> depending on traffic</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Yellow medallion cabs only, from the rank — ignore anyone approaching inside the terminal</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Two cabs, three per cab: "Romer Hell's Kitchen — 851 8th Avenue at West 51st–52nd"</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: taxi from JFK to Romer Hell's Kitchen"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="92" height="18" rx="3"/><text class="sm-bt" x="14" y="21">45–75 MIN CAB</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walkf" d="M36 58 H264"/><text class="sm-t" x="28" y="84">JFK</text><text class="sm-t" x="284" y="84" text-anchor="end">ROMER · 851 8TH</text><text class="sm-t" x="150" y="44" text-anchor="middle">QNS–MIDTOWN TUNNEL</text></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=John+F+Kennedy+International+Airport%2C+New+York&amp;daddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;dirflg=d" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=John+F+Kennedy+International+Airport%2C+New+York&amp;destination=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;travelmode=driving" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Flat fare covers all Manhattan destinations, tolls on top, tip 15–20%. Budget roughly $90–110 per cab all-in (estimate). Card accepted in every cab.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">16:00</span><h3>Romer Hell's Kitchen · Check-in</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Arrive ≈<b>16:00–16:30</b><span class="sep">·</span>Rooms ready from 15:00</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>45 min</b> — freshen up, layer up, regroup</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Hotel at 851 8th Ave between W 51st &amp; 52nd — 9th Ave's bars are one block west</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Straight to the desk — six rooms held from 15:00, keys and go</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: arriving at Romer Hell's Kitchen"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="62" height="18" rx="3"/><text class="sm-bt" x="14" y="21">AT VENUE</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-walk" cx="150" cy="52" r="24"/><circle class="sm-dst" cx="150" cy="28" r="3.5"/><circle class="sm-dst" cx="129" cy="64" r="3.5"/><circle class="sm-dst" cx="171" cy="64" r="3.5"/><text class="sm-ts" x="150" y="15" text-anchor="middle">8TH AVE</text><text class="sm-ts" x="88" y="56" text-anchor="end">9TH AVE</text><text class="sm-ts" x="212" y="56" text-anchor="start">W 51ST/52ND ST</text><text class="sm-ts" x="150" y="92" text-anchor="middle">HOTEL</text><use href="#sm-walker" x="144" y="45" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=John+F+Kennedy+International+Airport%2C+New+York&amp;daddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;dirflg=d" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=John+F+Kennedy+International+Airport%2C+New+York&amp;destination=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;travelmode=driving" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Decompress properly — showers, warm layers, phones on charge. A/C/E at 50th St is 2 min away for everything later in the week.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">17:00</span><h3>Hell's Kitchen &amp; Times Square Wander</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Times Square ≈<b>5 min walk</b><span class="sep">·</span>Jet-lag reset stroll</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>1 hr</b> — easy pace, no agenda</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>East on 51st to Broadway, drift south into Times Square (42nd–47th) — the screens run all afternoon</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Loop back via 8th/9th Ave — deli snacks, people-watching, supermarket run if needed</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk from the hotel to Times Square"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">≈5 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-walk" cx="150" cy="52" r="24"/><circle class="sm-dst" cx="150" cy="28" r="3.5"/><circle class="sm-dst" cx="129" cy="64" r="3.5"/><circle class="sm-dst" cx="171" cy="64" r="3.5"/><text class="sm-ts" x="150" y="15" text-anchor="middle">TIMES SQ →</text><text class="sm-ts" x="88" y="56" text-anchor="end">8TH AVE</text><text class="sm-ts" x="212" y="56" text-anchor="start">HOTEL</text><text class="sm-ts" x="150" y="92" text-anchor="middle">9TH AVE</text><use href="#sm-walker" x="144" y="45" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;daddr=Times+Square%2C+Broadway%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;destination=Times+Square%2C+Broadway%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Daytime flight means you land fresher than most arrivals — a short walk still beats a nap.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">18:00</span><h3>9th Ave Drinks Crawl · W 44th–52nd</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>First round <b>18:00</b><span class="sep">·</span>Early-ish night by design</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>2–3 hrs</b> — casual</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Stop 1</span>Rudy's Bar &amp; Grill — 627 9th Ave at 44th · dive-bar institution, free hot dogs with your drinks</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Stop 2</span>Work back north up 9th — the strip from W 44th–52nd is packed; hop any crowded bar</div></div>
+              <div class="drow"><span class="step-n">3</span><div><span class="lab">Stop 3</span>One more within a block of the hotel, then call it</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk down 9th Avenue to Rudy's Bar and Grill"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="74" height="18" rx="3"/><text class="sm-bt" x="14" y="21">9 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">HOTEL · 52ND</text><text class="sm-t" x="284" y="84" text-anchor="end">RUDY'S · 44TH</text><text class="sm-t" x="150" y="44" text-anchor="middle">9TH AVE · SOUTH</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;daddr=Rudy%27s+Bar+%26+Grill%2C+627+9th+Ave%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;destination=Rudy%27s+Bar+%26+Grill%2C+627+9th+Ave%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Do not go too big — tomorrow is a full Midtown day. Water before bed.</div>
+          </div></div></div>
+        </div>
+      </li>
+    </ol>
+    <div class="term rv"><i></i>End of line · Day 1 — back to Romer by 21:30</div>
+  </section>
+
+  <!-- ================= DAY 2 ================= -->
+  <section class="day" id="day2" style="--c:var(--red)" aria-label="Day 2">
+    <div class="sec-head rv"><h2>Day 2</h2><span class="k">1 · 2 · 3 Line</span></div>
+    <div class="rule rv"></div>
+    <div class="day-head rv">
+      <span class="big"><span class="bl lg bc-red">1</span><span class="bl lg bc-red">2</span><span class="bl lg bc-red">3</span></span>
+      <h2>Midtown Icons</h2>
+      <span class="date">Thu 19 Nov</span>
+    </div>
+    <p class="day-sub rv">7th Avenue express · the classic skyline day · steak night</p>
+
+    <div class="notice rv" role="note">
+      <span class="ex">!</span>
+      <div><div class="nt">Service Notice · Book Ahead</div>
+      <div class="nb">Today's book-aheads: The Rink at Rockefeller Center (14:30 skate session) and Morton's The Steakhouse (19:00, table for six — (212) 972-3315).</div></div>
+    </div>
+
+    <ol class="line">
+      <li class="stop rv">
+        <span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">08:00</span><h3>Coffee &amp; Breakfast · Midtown</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Fuel for a walking day<span class="sep">·</span>8th/9th Ave spots, 2 min out</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>45 min</b> — coffee, eggs, no rushing</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Short walk — 8th Ave between 44th–52nd is wall-to-wall coffee, or a 9th Ave diner for a proper plate</div></div>
+            <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Stock up on water/snacks for the day — hotel bodega or pharmacy on 8th</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: short walk from the hotel to 8th Avenue"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="74" height="18" rx="3"/><text class="sm-bt" x="14" y="21">2 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">ROMER</text><text class="sm-t" x="284" y="84" text-anchor="end">8TH AVE · W 48TH</text><text class="sm-t" x="150" y="44" text-anchor="middle">1 BLOCK EAST</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;daddr=8th+Ave+and+W+48th+St%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;destination=8th+Ave+and+W+48th+St%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Eat properly. Today is 12+ km on foot and The Rink is unforgiving on an empty stomach.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">09:00</span><h3>5th Avenue · Shops &amp; Landmarks</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Walk south on 5th<span class="sep">·</span>Windows &amp; spires</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>1 hr</b> — window-by-window pace</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>East on 51st to 5th Ave, turn south — Rockefeller Center's west side on your right</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Rank the windows: Cartier at 52nd, Saks at 50th, St Patrick's at 50th</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk from 8th Avenue to 5th Avenue"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="74" height="18" rx="3"/><text class="sm-bt" x="14" y="21">8 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="74" r="8"/><circle class="sm-orgd" cx="28" cy="74" r="3"/><circle class="sm-dst" cx="272" cy="30" r="8"/><path class="sm-walk" d="M36 74 H150 V30 H264"/><text class="sm-t" x="28" y="92">8TH AVE · W 50TH</text><text class="sm-t" x="284" y="40" text-anchor="end">SAKS · 5TH AVE</text><text class="sm-t" x="140" y="66" text-anchor="end">E ON 50TH · S ON 5TH</text><use href="#sm-walker" x="60" y="52" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=8th+Ave+and+W+50th+St%2C+New+York&amp;daddr=Saks+Fifth+Avenue%2C+611+5th+Ave%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=8th+Ave+and+W+50th+St%2C+New+York&amp;destination=Saks+Fifth+Avenue%2C+611+5th+Ave%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Holiday windows are unwrapped by mid-Nov. Saks runs a light show every few minutes after dusk — note it for later in the week.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">10:00</span><h3>St Patrick's Cathedral</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>5th Ave at 50th<span class="sep">·</span>Free — donations welcome</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>30–45 min</b> — quiet wander, warm up</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Opposite the Atlas statue and Saks — main doors on 5th between 50th &amp; 51st</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Inside: the nave, the chapels, light a candle if the mood takes you</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk from Saks to St Patrick's Cathedral"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="74" height="18" rx="3"/><text class="sm-bt" x="14" y="21">1 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">SAKS</text><text class="sm-t" x="284" y="84" text-anchor="end">ST PATRICK'S</text><text class="sm-t" x="150" y="44" text-anchor="middle">5TH AVE AT 50TH</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Saks+Fifth+Avenue%2C+611+5th+Ave%2C+New+York&amp;daddr=St+Patrick%27s+Cathedral%2C+5th+Ave%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Saks+Fifth+Avenue%2C+611+5th+Ave%2C+New+York&amp;destination=St+Patrick%27s+Cathedral%2C+5th+Ave%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Free entry; donations by the door take cards. It's a working church — hats off, voices down, phones on silent.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop transfer rv">
+        <span class="chip">Walk ≈15 min</span><span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">10:45</span><h3>Central Park · South End</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Enter at Grand Army Plaza<span class="sep">·</span>59th &amp; 5th</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>45 min</b> — gentle, photo-stopping pace</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>North on 5th Ave, ~9 blocks to 59th — Grand Army Plaza and the golden Pulitzer Fountain</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Into the park: the Pond, Gapstow Bridge, the skyline framed through bare November trees</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk north on 5th Avenue to Grand Army Plaza"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">12 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="150" cy="76" r="8"/><circle class="sm-orgd" cx="150" cy="76" r="3"/><circle class="sm-dst" cx="150" cy="24" r="8"/><path class="sm-walk" d="M150 68 V32"/><text class="sm-t" x="150" y="92" text-anchor="middle">ST PATRICK'S</text><text class="sm-t" x="150" y="12" text-anchor="middle">GRAND ARMY PLAZA</text><text class="sm-t" x="206" y="52">5TH AVE · NORTH</text><use href="#sm-walker" x="120" y="44" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=St+Patrick%27s+Cathedral%2C+5th+Ave%2C+New+York&amp;daddr=Grand+Army+Plaza%2C+5th+Ave%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=St+Patrick%27s+Cathedral%2C+5th+Ave%2C+New+York&amp;destination=Grand+Army+Plaza%2C+5th+Ave%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>The carriage ranks line the park's south edge here — that's the next stop. From the hotel this walk is ~15 min straight up 7th/8th if anyone doubles back.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="chip">Pay on the day</span><span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">11:30</span><h3>Horse &amp; Carriage Ride</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Meeting point ~59th St park edge<span class="sep">·</span>Weekday rides from ~10 AM</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>≈45–50 min</b> in the carriage · regroup after</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Ranks around the south edge of the park near Grand Army Plaza (5th &amp; 59th) and toward the 7th–8th Ave side — agree route, duration &amp; price before you climb in</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Two carriages for six — split into pairs, swap seats at the halfway mark</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: carriage loop around the south end of Central Park"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="98" height="18" rx="3"/><text class="sm-bt" x="14" y="21">45–50 MIN LOOP</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-walk" cx="150" cy="52" r="24"/><circle class="sm-dst" cx="150" cy="28" r="3.5"/><circle class="sm-dst" cx="129" cy="64" r="3.5"/><circle class="sm-dst" cx="171" cy="64" r="3.5"/><text class="sm-ts" x="150" y="15" text-anchor="middle">GRAND ARMY PLAZA</text><text class="sm-ts" x="88" y="56" text-anchor="end">5TH AVE</text><text class="sm-ts" x="212" y="56" text-anchor="start">59TH ST</text><text class="sm-ts" x="150" y="92" text-anchor="middle">THE POND</text><use href="#sm-walker" x="144" y="45" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Grand+Army+Plaza%2C+5th+Ave%2C+New+York&amp;daddr=Gapstow+Bridge%2C+Central+Park%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Grand+Army+Plaza%2C+5th+Ave%2C+New+York&amp;destination=Gapstow+Bridge%2C+Central+Park%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Rough guide only: ~$120–180 per carriage for the standard loop (estimate — confirm on the day). Blankets provided; tip the driver.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">12:30</span><h3>Lunch · Central Park &amp; Midtown</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Group vote<span class="sep">·</span>Columbus Circle or deeper park</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>1 hr 30</b> — lunch plus a wander</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Option A</span>Walk out at Columbus Circle (57th &amp; 8th) — the mall's food hall is warm and quick</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Option B</span>Push 15 min further into the park to Bethesda Terrace first, lunch after at the boathouse café or back on 9th Ave</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk from Gapstow Bridge to Columbus Circle"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">12 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">GAPSTOW BRDG</text><text class="sm-t" x="284" y="84" text-anchor="end">COLUMBUS CIRCLE</text><text class="sm-t" x="150" y="44" text-anchor="middle">SW ACROSS THE PARK</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Gapstow+Bridge%2C+Central+Park%2C+New+York&amp;daddr=Columbus+Circle%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Gapstow+Bridge%2C+Central+Park%2C+New+York&amp;destination=Columbus+Circle%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Cold-but-clear day — the terrace option is the better photo, the Circle option is the warmer coat.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">14:00</span><h3>Rockefeller Center</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>5th–6th Ave, 48th–51st<span class="sep">·</span>Tree up from mid-Nov</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>30–45 min</b> — Channel Gardens, plaza, Prometheus</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>From Columbus Circle: east on 51st past 6th to the plaza — or from the park, southeast to 50th</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Prometheus overlooks The Rink below; Radio City marquee across 6th Ave</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk from Columbus Circle to Rockefeller Center"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">12 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">COLUMBUS CIRCLE</text><text class="sm-t" x="284" y="84" text-anchor="end">30 ROCK</text><text class="sm-t" x="150" y="44" text-anchor="middle">EAST ON 50TH/51ST</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Columbus+Circle%2C+New+York&amp;daddr=Rockefeller+Center%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Columbus+Circle%2C+New+York&amp;destination=Rockefeller+Center%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>The big tree is up from mid-Nov (the lighting ceremony is early Dec, so it may not be lit yet — the plaza builds all month regardless). Skates on at 14:30.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="chip warn">Book Ahead</span><span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">14:30</span><h3>Ice Skating · The Rink at Rockefeller Center</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Winter season<span class="sep">·</span>Skate session 14:30 — pre-booked</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>60–90 min</b> including skate hire</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Book your skate session ahead online — holiday-season slots sell out, walk-ups get turned away</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Skate hire on site; small lockers for shoes and bags — travel light</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: The Rink at Rockefeller Center"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="110" height="18" rx="3"/><text class="sm-bt" x="14" y="21">AT VENUE · 1 MIN</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-walk" cx="150" cy="52" r="24"/><circle class="sm-dst" cx="150" cy="28" r="3.5"/><circle class="sm-dst" cx="129" cy="64" r="3.5"/><circle class="sm-dst" cx="171" cy="64" r="3.5"/><text class="sm-ts" x="150" y="15" text-anchor="middle">5TH AVE</text><text class="sm-ts" x="88" y="56" text-anchor="end">ROCKEFELLER PLAZA</text><text class="sm-ts" x="212" y="56" text-anchor="start">THE RINK</text><text class="sm-ts" x="150" y="92" text-anchor="middle">6TH AVE</text><use href="#sm-walker" x="144" y="45" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Rockefeller+Center%2C+New+York&amp;daddr=The+Rink+at+Rockefeller+Center%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Rockefeller+Center%2C+New+York&amp;destination=The+Rink+at+Rockefeller+Center%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Under Prometheus, under the tree — the most photogenic hour of the trip. Socks that go above the boot line; nobody skates well and everybody looks great.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="chip warn">Optional · Book Ahead</span><span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">16:00</span><h3>Rockefeller Plaza / 5th Ave · Golden Hour</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Sunset ≈16:30<span class="sep">·</span>Top of the Rock = timed tickets</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>1 hr</b> — deck or street level</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Option A</span>Top of the Rock observation deck (30 Rock, enter on 50th) — book timed entry ahead, golden-hour slots go first</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Option B</span>Stay street-level — 5th Ave windows light up as dusk lands; Saks' show runs every few minutes</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: from The Rink up to Top of the Rock"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="74" height="18" rx="3"/><text class="sm-bt" x="14" y="21">1 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="150" cy="76" r="8"/><circle class="sm-orgd" cx="150" cy="76" r="3"/><circle class="sm-dst" cx="150" cy="24" r="8"/><path class="sm-walk" d="M150 68 V32"/><text class="sm-t" x="150" y="92" text-anchor="middle">THE RINK</text><text class="sm-t" x="150" y="12" text-anchor="middle">TOP OF THE ROCK</text><text class="sm-t" x="206" y="52">ENTER ON 50TH</text><use href="#sm-walker" x="120" y="44" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=The+Rink+at+Rockefeller+Center%2C+New+York&amp;daddr=Top+of+the+Rock%2C+30+Rockefeller+Plaza%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=The+Rink+at+Rockefeller+Center%2C+New+York&amp;destination=Top+of+the+Rock%2C+30+Rockefeller+Plaza%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>From the deck: Empire State dead ahead, Central Park over the left shoulder. Vote now or the light decides for you.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop transfer rv">
+        <span class="chip">Walk ≈10 min</span><span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">17:30</span><h3>Back to Romer · Shower &amp; Change</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>North to 51st<span class="sep">·</span>Regroup in the lobby 18:45</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>1 hr</b> door-to-door with the turnaround</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Walk ~10 min: west on 50th/51st from 5th–6th Ave straight to 8th Ave</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Shower, change, phones on charge — lobby at 18:45 for the walk/cab downtown</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk from Rockefeller Center back to the hotel"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">10 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="74" r="8"/><circle class="sm-orgd" cx="28" cy="74" r="3"/><circle class="sm-dst" cx="272" cy="30" r="8"/><path class="sm-walk" d="M36 74 H150 V30 H264"/><text class="sm-t" x="28" y="92">30 ROCK</text><text class="sm-t" x="284" y="40" text-anchor="end">ROMER</text><text class="sm-t" x="140" y="66" text-anchor="end">W ON 51ST → 8TH AVE</text><use href="#sm-walker" x="60" y="52" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Rockefeller+Center%2C+New+York&amp;daddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Rockefeller+Center%2C+New+York&amp;destination=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Smart-casual for Morton's — jeans fine, trainers fine, effort appreciated.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="chip warn">Book Ahead</span><span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">19:00</span><h3>Steak Dinner · Morton's The Steakhouse</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Reservation for 6 · (212) 972-3315<span class="sep">·</span>19:00 sharp</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>≈2 hrs</b> — old-school steakhouse pace</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>551 Fifth Ave — the entrance is on E 45th St between 5th &amp; Madison</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Inside the 1927 Art Deco Fred F. French Building, one block north of the Harvard Club · 15-min walk or 5-min cab from the hotel</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk from the hotel to Morton's The Steakhouse"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">15 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="74" r="8"/><circle class="sm-orgd" cx="28" cy="74" r="3"/><circle class="sm-dst" cx="272" cy="30" r="8"/><path class="sm-walk" d="M36 74 H170 V30 H264"/><text class="sm-t" x="28" y="92">ROMER · 8TH AVE</text><text class="sm-t" x="284" y="40" text-anchor="end">MORTON'S · 45TH</text><text class="sm-t" x="160" y="66" text-anchor="end">E ON 50TH/51ST · S ON 5TH</text><use href="#sm-walker" x="60" y="52" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;daddr=Morton%27s+The+Steakhouse%2C+551+5th+Ave%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;destination=Morton%27s+The+Steakhouse%2C+551+5th+Ave%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Reservation for six is essential — call (212) 972-3315 well ahead. Steak for the table, martinis for the brave, early night after.</div>
+          </div></div></div>
+        </div>
+      </li>
+    </ol>
+    <div class="term rv"><i></i>End of line · Day 2 — walk off the steak: 8th Ave north, 15 min</div>
+  </section>
+
+  <!-- ================= DAY 3 ================= -->
+  <section class="day" id="day3" style="--c:var(--yellow)" aria-label="Day 3">
+    <div class="sec-head rv"><h2>Day 3</h2><span class="k">N · Q · R Line</span></div>
+    <div class="rule rv"></div>
+    <div class="day-head rv">
+      <span class="big"><span class="bl lg bc-yellow">N</span><span class="bl lg bc-yellow">Q</span><span class="bl lg bc-yellow">R</span></span>
+      <h2>Downtown</h2>
+      <span class="date">Fri 20 Nov</span>
+    </div>
+    <p class="day-sub rv">Broadway local · harbour, memorial &amp; cannoli</p>
+
+    <div class="notice rv" role="note">
+      <span class="ex">!</span>
+      <div><div class="nt">Travel Note · Getting Downtown</div>
+      <div class="nb">A/C/E from 50th St (8th Ave, 2 min from the hotel) downtown to Chambers St / WTC — ~15–20 min ride. N/R from 49th (7th Ave) works too. OMNY tap-to-pay, one tap per person.</div></div>
+    </div>
+    <div class="notice rv" role="note">
+      <span class="ex">!</span>
+      <div><div class="nt">Service Notice · Book Ahead</div>
+      <div class="nb">9/11 Museum entry is timed and books out on busy days — reserve ahead on the official site. The Memorial itself is free and untimed.</div></div>
+    </div>
+
+    <ol class="line">
+      <li class="stop transfer rv">
+        <span class="chip">Subway ≈20 min</span><span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">08:00</span><h3>Blue Bottle Coffee · 150 Greenwich St</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>A/C/E 50th St → Chambers St<span class="sep">·</span>Doors to flat white ≈30 min</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>45 min</b> — coffee &amp; pastries by the WTC</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Leave 07:30 — A/C/E from 50th St (8th Ave) downtown to Chambers St, ~15–20 min ride</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Walk 5 min west to 150 Greenwich St, beside One WTC — Blue Bottle opens early</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: subway from 50th St to the World Trade Center"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="104" height="18" rx="3"/><text class="sm-bt" x="14" y="21">A · 20 MIN RIDE</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><path class="sm-ride" d="M28 58 H272"/><path class="sm-stk" d="M120 52 v12"/><text class="sm-ts" x="120" y="80" text-anchor="middle">50 ST</text><path class="sm-stk" d="M200 52 v12"/><text class="sm-ts" x="200" y="80" text-anchor="middle">CHAMBERS</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><circle cx="74" cy="40" r="10" fill="var(--c)"/><text class="sm-t sm-tw" x="74" y="44" text-anchor="middle">A</text><text class="sm-t" x="24" y="44">ROMER</text><text class="sm-t" x="284" y="84" text-anchor="end">WTC · BLUE BOTTLE</text><text class="sm-ts" x="160" y="36" text-anchor="middle">DOWNTOWN</text></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;daddr=Blue+Bottle+Coffee%2C+150+Greenwich+St%2C+New+York&amp;dirflg=r" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;destination=Blue+Bottle+Coffee%2C+150+Greenwich+St%2C+New+York&amp;travelmode=transit" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>The WTC plaza at 8 AM is eerily beautiful — walk it slowly before the crowds arrive.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="chip warn">Book Ahead</span><span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">09:00</span><h3>9/11 Memorial &amp; Museum</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Memorial free &amp; open daily<span class="sep">·</span>Museum timed entry — pre-booked</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>2–2.5 hrs</b> total across both</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Memorial first: the two reflecting pools and the names — open daily, free</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Museum on advance timed tickets — take the ~09:30 slot; allow 90 min inside</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk from Blue Bottle to the 9/11 Memorial"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="74" height="18" rx="3"/><text class="sm-bt" x="14" y="21">2 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">BLUE BOTTLE</text><text class="sm-t" x="284" y="84" text-anchor="end">9/11 MEMORIAL</text><text class="sm-t" x="150" y="44" text-anchor="middle">WTC PLAZA</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Blue+Bottle+Coffee%2C+150+Greenwich+St%2C+New+York&amp;daddr=9/11+Memorial%2C+180+Greenwich+St%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Blue+Bottle+Coffee%2C+150+Greenwich+St%2C+New+York&amp;destination=9/11+Memorial%2C+180+Greenwich+St%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>This one sets the tone for the day. Bags are screened at the museum; quiet voices on the plaza.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">11:30</span><h3>World Trade Center &amp; The Oculus</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Calatrava's white ribcage<span class="sep">·</span>Free to wander</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>45–60 min</b> — up, out, and around</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Up from the museum into the Oculus — look up first, then out the wings</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>One WTC base, the Survivor Tree, the plaza seen from above</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk from the Memorial to the Oculus"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="74" height="18" rx="3"/><text class="sm-bt" x="14" y="21">2 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">9/11 MEMORIAL</text><text class="sm-t" x="284" y="84" text-anchor="end">THE OCULUS</text><text class="sm-t" x="150" y="44" text-anchor="middle">GREENWICH ST</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=9/11+Memorial%2C+180+Greenwich+St%2C+New+York&amp;daddr=Oculus+World+Trade+Center%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=9/11+Memorial%2C+180+Greenwich+St%2C+New+York&amp;destination=Oculus+World+Trade+Center%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>The wings frame One WTC perfectly — that's the group photo. Then drift south toward the water for the cruise.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="chip">Harbour Cruise · No Landing</span><span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">12:30</span><h3>Statue of Liberty Sightseeing Cruise</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Battery Park / pier area<span class="sep">·</span>≈60–90 min on the water</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>60–90 min</b> — harbour loop</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Walk ~12 min south from the WTC area to the Battery Park / South Street Seaport piers</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Pick a 60–90 min sightseeing cruise — a close pass of Liberty &amp; Ellis Islands, staying aboard. This is NOT a Liberty Island landing</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk from the Oculus to the Battery Park piers"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">12 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">THE OCULUS</text><text class="sm-t" x="284" y="84" text-anchor="end">BATTERY PARK</text><text class="sm-t" x="150" y="44" text-anchor="middle">WEST ST · TO THE WATER</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Oculus+World+Trade+Center%2C+New+York&amp;daddr=Battery+Park%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Oculus+World+Trade+Center%2C+New+York&amp;destination=Battery+Park%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Upper deck is cold and perfect — hats on, cameras charged. Walk-up tickets usually available (~$30–40pp, estimate); wrap up warm.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">14:30</span><h3>Lunch · Lower Manhattan</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Seaport &amp; Fulton Market<span class="sep">·</span>Back near the water</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>1 hr</b> — oysters, pizza, or a proper table</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Head back north to the Seaport / Fulton Market area — the historic piers and cobblestones</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Group vote: oysters at the market, pizza on Fulton, or sit-down if it's gone cold</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk from Battery Park to the Seaport"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">10 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">BATTERY PARK</text><text class="sm-t" x="284" y="84" text-anchor="end">SOUTH ST SEAPORT</text><text class="sm-t" x="150" y="44" text-anchor="middle">FDR DR · NORTH</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Battery+Park%2C+New+York&amp;daddr=South+Street+Seaport%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Battery+Park%2C+New+York&amp;destination=South+Street+Seaport%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Fish and chips at the Seaport hits different after a boat ride. Eat before Chinatown — grazing happens there anyway.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop transfer rv">
+        <span class="chip">Walk ≈20 min</span><span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">15:30</span><h3>Chinatown Walk</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>≈20 min walk from the WTC area<span class="sep">·</span>Streets, shops, snacks</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>1 hr+</b> — drift and graze</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Walk east from the WTC area — Worth St → Mulberry → Canal St</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Grocery stores, dumpling windows, teahouses, karaoke signage — graze as you go</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk from the Seaport into Chinatown"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">18 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">SEAPORT</text><text class="sm-t" x="284" y="84" text-anchor="end">CHINATOWN · CANAL</text><text class="sm-t" x="150" y="44" text-anchor="middle">EAST BROADWAY → CANAL</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=South+Street+Seaport%2C+New+York&amp;daddr=Chinatown%2C+Canal+St%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=South+Street+Seaport%2C+New+York&amp;destination=Chinatown%2C+Canal+St%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Cash-friendly neighbourhood — small bills useful for bakeries and produce stands. Nobody leaves without a dumpling.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">16:30</span><h3>Little Italy · Coffee &amp; Cannoli</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Directly beside Chinatown<span class="sep">·</span>Zia Maria, Mulberry St</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>45 min</b> — espresso break</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Mulberry St between Canal &amp; Grand — Zia Maria for espresso &amp; cannoli</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Stroll the strip — red, green and gold all year round</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk from Canal Street to Zia Maria on Mulberry"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="74" height="18" rx="3"/><text class="sm-bt" x="14" y="21">2 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">CANAL ST</text><text class="sm-t" x="284" y="84" text-anchor="end">ZIA MARIA</text><text class="sm-t" x="150" y="44" text-anchor="middle">MULBERRY ST · NORTH</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Canal+St+and+Mulberry+St%2C+New+York&amp;daddr=Zia+Maria%2C+Mulberry+St%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Canal+St+and+Mulberry+St%2C+New+York&amp;destination=Zia+Maria%2C+Mulberry+St%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>One cannoli per two people, then argue about who gets the bigger half. That's the whole game.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">18:00</span><h3>Relaxed Evening · Downtown or Home</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Subway back<span class="sep">·</span>A/C/E or N/R up to 50th St</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>Open-ended</b> — nobody books anything tonight</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Option A</span>Dinner downtown — a Chinatown banquet or red-sauce Little Italy</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Option B</span>Drift SoHo for an hour, then subway home — A/C/E from Canal/Chambers or N/R from Canal, ~20 min up to 50th St</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: subway from Little Italy back to 50th St"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="104" height="18" rx="3"/><text class="sm-bt" x="14" y="21">A · 20 MIN RIDE</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><path class="sm-ride" d="M28 58 H272"/><path class="sm-stk" d="M140 52 v12"/><text class="sm-ts" x="140" y="80" text-anchor="middle">CANAL ST</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><circle cx="74" cy="40" r="10" fill="var(--c)"/><text class="sm-t sm-tw" x="74" y="44" text-anchor="middle">A</text><text class="sm-t" x="24" y="44">LITTLE ITALY</text><text class="sm-t" x="284" y="84" text-anchor="end">ROMER · 50TH ST</text><text class="sm-ts" x="190" y="36" text-anchor="middle">UPTOWN</text></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Mulberry+St+and+Grand+St%2C+New+York&amp;daddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;dirflg=r" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Mulberry+St+and+Grand+St%2C+New+York&amp;destination=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;travelmode=transit" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Saturday is the big one — tonight ends whenever the group runs out of steam. Regroup at the hotel if the crew splits.</div>
+          </div></div></div>
+        </div>
+      </li>
+    </ol>
+    <div class="term rv"><i></i>End of line · Day 3 — A/C/E local back to 50th St, 2 min from bed</div>
+  </section>
+
+  <!-- ================= DAY 4 · FORK DAY ================= -->
+  <section class="day" id="day4" data-fork="a" style="--c:var(--green)" aria-label="Day 4">
+    <div class="sec-head rv"><h2>Day 4</h2><span class="k">4 · 5 · 6 Line</span></div>
+    <div class="rule rv"></div>
+    <div class="day-head rv">
+      <span class="big"><span class="bl lg bc-green">4</span><span class="bl lg bc-green">5</span><span class="bl lg bc-green">6</span></span>
+      <h2>Choose Your Line</h2>
+      <span class="date">Sat 21 Nov</span>
+    </div>
+    <p class="day-sub rv">Lexington Ave express · two services diverge today — pick a line below</p>
+
+    <div class="notice rv" role="note">
+      <span class="ex">!</span>
+      <div><div class="nt">Service Notice · Saturday Junction</div>
+      <div class="nb">Option A — light day, split evening: brunch &amp; Winter Village, then Chicago (matinee) for some and Knicks vs Portland (7:30 PM) at the Garden for everyone. Option B — SoHo shopping run, dinner in Hell's Kitchen, then a club till 4 AM. Book-ahead items are flagged on each stop. Without JavaScript both options print below, stacked.</div></div>
+    </div>
+
+    <!-- junction toggle: hidden without JS; both forks print below when JS is off -->
+    <div class="forktoggle" role="group" aria-label="Choose Saturday's plan">
+      <div class="ft-rails" aria-hidden="true"><i class="trunk"></i><i class="br b1"></i><i class="br b2"></i></div>
+      <div class="ft-btns">
+        <button type="button" data-fork="a" aria-pressed="true"><b>Option A · Balls &amp; Broadway</b><span>Brunch · Winter Village · Chicago + Knicks</span></button>
+        <button type="button" data-fork="b" aria-pressed="false"><b>Option B · Shop &amp; Dance</b><span>SoHo · dinner · club till 4 AM</span></button>
+      </div>
+      <div class="ft-state"><span>Junction · two services diverge</span><span>Running: <b id="forkState">Option A</b></span></div>
+    </div>
+
+    <!-- FORK A -->
+    <div class="fork-label">Option A — Balls &amp; Broadway · light day, split evening</div>
+    <div class="fork fork-a" id="forkA">
+      <ol class="line">
+        <li class="stop rv">
+          <span class="node"></span>
+          <div class="card">
+            <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+              <span class="t">10:30</span><h3>Brunch · Hell's Kitchen</h3>
+              <span class="chev">▾</span>
+            </div>
+            <div class="ntsign"><span class="lit"></span>Sleep in first<span class="sep">·</span>9th Ave between 44th–52nd</div>
+            <div class="detail"><div><div class="dbody">
+              <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>1 hr 30</b> — nobody sets an alarm</div></div>
+              <div class="steps">
+                <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>One block west to 9th Ave — it's brunch-dense; pick the busiest patio</div></div>
+                <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Eggs, pancakes, Bloody Marys — no wrong answers</div></div>
+              </div>
+              <div class="stripmap" role="img" aria-label="Map: one block west to 9th Avenue"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="74" height="18" rx="3"/><text class="sm-bt" x="14" y="21">2 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-walk" cx="150" cy="52" r="24"/><circle class="sm-dst" cx="150" cy="28" r="3.5"/><circle class="sm-dst" cx="129" cy="64" r="3.5"/><circle class="sm-dst" cx="171" cy="64" r="3.5"/><text class="sm-ts" x="150" y="15" text-anchor="middle">9TH AVE</text><text class="sm-ts" x="88" y="56" text-anchor="end">W 52ND ST</text><text class="sm-ts" x="212" y="56" text-anchor="start">W 44TH ST</text><text class="sm-ts" x="150" y="92" text-anchor="middle">BRUNCH</text><use href="#sm-walker" x="144" y="45" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;daddr=9th+Ave+and+W+51st+St%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;destination=9th+Ave+and+W+51st+St%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Late start on purpose — today is light by design ahead of a split evening.</div>
+            </div></div></div>
+          </div>
+        </li>
+
+        <li class="stop rv">
+          <span class="chip">Optional · Walk ≈15 min</span><span class="node"></span>
+          <div class="card">
+            <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+              <span class="t">12:00</span><h3>Bryant Park Winter Village</h3>
+              <span class="chev">▾</span>
+            </div>
+            <div class="ntsign"><span class="lit"></span>Holiday market open by mid-Nov<span class="sep">·</span>Stalls, rink, mulled wine</div>
+            <div class="detail"><div><div class="dbody">
+              <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>1–2 hrs</b> — gentle browse, low commitment</div></div>
+              <div class="steps">
+                <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>South on 8th, east on 42nd — the park behind the library</div></div>
+                <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Market huts for gifts, rink-side mulled wine, benches for the tired</div></div>
+              </div>
+              <div class="stripmap" role="img" aria-label="Map: walk from Hell's Kitchen to Bryant Park"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">15 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="74" r="8"/><circle class="sm-orgd" cx="28" cy="74" r="3"/><circle class="sm-dst" cx="272" cy="30" r="8"/><path class="sm-walk" d="M36 74 H170 V30 H264"/><text class="sm-t" x="28" y="92">9TH AVE · W 52ND</text><text class="sm-t" x="284" y="40" text-anchor="end">BRYANT PARK</text><text class="sm-t" x="160" y="66" text-anchor="end">S ON 8TH · E ON 42ND</text><use href="#sm-walker" x="60" y="52" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=9th+Ave+and+W+52nd+St%2C+New+York&amp;daddr=Bryant+Park%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=9th+Ave+and+W+52nd+St%2C+New+York&amp;destination=Bryant+Park%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Free to wander; skating optional. Perfect crew-splitting venue — stalls, benches and space.</div>
+            </div></div></div>
+          </div>
+        </li>
+
+        <li class="stop rv">
+          <span class="chip warn">Book Ahead</span><span class="node"></span>
+          <div class="card">
+            <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+              <span class="t">13:45</span><h3>Split — Girls → Chicago (Matinee)</h3>
+              <span class="chev">▾</span>
+            </div>
+            <div class="ntsign"><span class="lit"></span>Ambassador Theatre, 219 W 49th<span class="sep">·</span>Curtain 14:30</div>
+            <div class="detail"><div><div class="dbody">
+              <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>2 hr 30</b> including interval · out ≈17:15</div></div>
+              <div class="steps">
+                <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>5 min walk from the hotel — 219 W 49th St, between Broadway &amp; 8th</div></div>
+                <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Sat shows 2:30 PM &amp; 8:00 PM — planned: the 2:30 matinee</div></div>
+              </div>
+              <div class="stripmap" role="img" aria-label="Map: walk from Bryant Park to the Ambassador Theatre"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">10 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">BRYANT PARK</text><text class="sm-t" x="284" y="84" text-anchor="end">AMBASSADOR TH</text><text class="sm-t" x="150" y="44" text-anchor="middle">W 49TH ST</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Bryant+Park%2C+New+York&amp;daddr=Ambassador+Theatre%2C+219+W+49th+St%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Bryant+Park%2C+New+York&amp;destination=Ambassador+Theatre%2C+219+W+49th+St%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Tickets roughly $50–150 depending on seats — book ahead. The 8:00 PM show is the alternative if the group prefers one that syncs with the Knicks finish.</div>
+            </div></div></div>
+          </div>
+        </li>
+
+        <li class="stop rv">
+          <span class="chip">Split</span><span class="node"></span>
+          <div class="card">
+            <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+              <span class="t">14:00</span><h3>Everyone Else · Free Afternoon</h3>
+              <span class="chev">▾</span>
+            </div>
+            <div class="ntsign"><span class="lit"></span>MSG by 19:00<span class="sep">·</span>Be ready to roll</div>
+            <div class="detail"><div><div class="dbody">
+              <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>Free</b> — unscripted by design</div></div>
+              <div class="steps">
+                <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Hotel bar, Midtown wander, a nap — dealer's choice</div></div>
+                <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>18:00 — early feed near the Garden: 7th Ave at 31st–33rd has pizza, pubs and delis</div></div>
+              </div>
+              <div class="stripmap" role="img" aria-label="Map: walk from the hotel down to Madison Square Garden"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">25 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">HOTEL · 8TH AVE</text><text class="sm-t" x="284" y="84" text-anchor="end">MADISON SQ GARDEN</text><text class="sm-t" x="150" y="30" text-anchor="middle">DOWN 8TH AVE</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Ambassador+Theatre%2C+219+W+49th+St%2C+New+York&amp;daddr=Madison+Square+Garden%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Ambassador+Theatre%2C+219+W+49th+St%2C+New+York&amp;destination=Madison+Square+Garden%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Pace yourselves — tip-off is 19:30 and the night runs late. Meet at the hotel at 18:45 if going down together.</div>
+            </div></div></div>
+          </div>
+        </li>
+
+        <li class="stop rv">
+          <span class="chip warn">Book Ahead</span><span class="node"></span>
+          <div class="card">
+            <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+              <span class="t">19:30</span><h3>Knicks vs Portland Trail Blazers</h3>
+              <span class="chev">▾</span>
+            </div>
+            <div class="ntsign"><span class="lit"></span>Madison Square Garden<span class="sep">·</span>7th Ave at 31st–33rd · 7:30 PM tip</div>
+            <div class="detail"><div><div class="dbody">
+              <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>≈2 hr 30</b> · final buzzer ≈22:15</div></div>
+              <div class="steps">
+                <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>15 min walk from the hotel — straight down 8th/7th Ave to 33rd; or one stop on the A/C/E to 34th</div></div>
+                <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Doors open ~18:00 — arrive by 19:00 for warm-ups; small bags only, check MSG's policy</div></div>
+              </div>
+              <div class="stripmap" role="img" aria-label="Map: walk from the hotel to Madison Square Garden"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">15 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">ROMER · 8TH AVE</text><text class="sm-t" x="284" y="84" text-anchor="end">MSG · 7TH AVE</text><text class="sm-t" x="150" y="44" text-anchor="middle">8TH → 7TH AVE · 33RD</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;daddr=Madison+Square+Garden%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;destination=Madison+Square+Garden%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Tickets from ~$240–260 — book ahead; the upper bowl is loud and glorious. The world's most famous arena on a Saturday night.</div>
+            </div></div></div>
+          </div>
+        </li>
+
+        <li class="stop rv">
+          <span class="chip">Regroup</span><span class="node"></span>
+          <div class="card">
+            <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+              <span class="t">22:30</span><h3>Late Drinks · Hell's Kitchen</h3>
+              <span class="chev">▾</span>
+            </div>
+            <div class="ntsign"><span class="lit"></span>Both groups within ~10 min walk<span class="sep">·</span>9th Ave regroup</div>
+            <div class="detail"><div><div class="dbody">
+              <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>1 hr+</b> — last orders by crew consensus</div></div>
+              <div class="steps">
+                <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Garden crew: cab or walk up 8th Ave (~25 min on foot — cab recommended after 22:00)</div></div>
+                <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Theatre crew: 5 min from the Ambassador — pick the bar, text the pin</div></div>
+              </div>
+              <div class="stripmap" role="img" aria-label="Map: walk from the Garden back to Hell's Kitchen"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">25 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">MSG</text><text class="sm-t" x="284" y="84" text-anchor="end">9TH AVE · W 49TH</text><text class="sm-t" x="150" y="44" text-anchor="middle">UP 8TH AVE</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Madison+Square+Garden%2C+New+York&amp;daddr=9th+Ave+and+W+49th+St%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Madison+Square+Garden%2C+New+York&amp;destination=9th+Ave+and+W+49th+St%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Compare notes: jazz hands vs. jump shots. If the girls took the 8 PM show instead, the two groups finish within minutes of each other — same plan.</div>
+            </div></div></div>
+          </div>
+        </li>
+      </ol>
+      <div class="notice rv" role="note">
+        <span class="ex">!</span>
+        <div><div class="nt">Service Notice · Book Ahead</div>
+        <div class="nb">Chicago — Ambassador Theatre, tickets ~$50–150, book ahead. Knicks vs Portland — MSG, tickets from ~$240–260, book ahead. Both sell out on Saturdays in November.</div></div>
+      </div>
+      <div class="term rv"><i></i>End of service · Fork A — sleep well; Sunday is for recovery</div>
+    </div>
+
+    <!-- FORK B -->
+    <div class="fork-label">Option B — Shop &amp; Dance · retail by day, dancing till 4 AM</div>
+    <div class="fork fork-b" id="forkB">
+      <ol class="line">
+        <li class="stop rv">
+          <span class="node"></span>
+          <div class="card">
+            <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+              <span class="t">09:00</span><h3>Coffee · Hell's Kitchen</h3>
+              <span class="chev">▾</span>
+            </div>
+            <div class="ntsign"><span class="lit"></span>Quick caffeine<span class="sep">·</span>Leave by 09:30</div>
+            <div class="detail"><div><div class="dbody">
+              <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>30 min</b> — coffee &amp; pastries near the hotel</div></div>
+              <div class="steps">
+                <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>9th Ave bakery or 8th Ave coffee — grab and go, the subway's waiting</div></div>
+              </div>
+              <div class="stripmap" role="img" aria-label="Map: one block west to 9th Avenue"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="74" height="18" rx="3"/><text class="sm-bt" x="14" y="21">2 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-walk" cx="150" cy="52" r="24"/><circle class="sm-dst" cx="150" cy="28" r="3.5"/><circle class="sm-dst" cx="129" cy="64" r="3.5"/><circle class="sm-dst" cx="171" cy="64" r="3.5"/><text class="sm-ts" x="150" y="15" text-anchor="middle">9TH AVE</text><text class="sm-ts" x="88" y="56" text-anchor="end">W 52ND ST</text><text class="sm-ts" x="212" y="56" text-anchor="start">W 51ST ST</text><text class="sm-ts" x="150" y="92" text-anchor="middle">COFFEE</text><use href="#sm-walker" x="144" y="45" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;daddr=9th+Ave+and+W+51st+St%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;destination=9th+Ave+and+W+51st+St%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Early start, late finish — tonight runs to 4 AM. Eat breakfast like you mean it.</div>
+            </div></div></div>
+          </div>
+        </li>
+
+        <li class="stop transfer rv">
+          <span class="chip">Subway ≈15 min ride</span><span class="node"></span>
+          <div class="card">
+            <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+              <span class="t">09:45</span><h3>Downtown · SoHo</h3>
+              <span class="chev">▾</span>
+            </div>
+            <div class="ntsign"><span class="lit"></span>A/C/E → Spring St or N/R → Prince St<span class="sep">·</span>Both ~15 min rides</div>
+            <div class="detail"><div><div class="dbody">
+              <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>≈30 min</b> door to surface</div></div>
+              <div class="steps">
+                <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>A/C/E from 50th St to Spring St, or N/R from 49th to Prince St — either puts you on the Broadway–Prince corridor</div></div>
+                <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Surface, orient on Broadway &amp; Prince — the cast-iron blocks start here</div></div>
+              </div>
+              <div class="stripmap" role="img" aria-label="Map: subway from 49th St to Prince St in SoHo"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="104" height="18" rx="3"/><text class="sm-bt" x="14" y="21">R · 18 MIN RIDE</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><path class="sm-ride" d="M28 58 H272"/><path class="sm-stk" d="M140 52 v12"/><text class="sm-ts" x="140" y="80" text-anchor="middle">49 ST</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><circle cx="74" cy="40" r="10" fill="var(--c)"/><text class="sm-t sm-tw" x="74" y="44" text-anchor="middle">R</text><text class="sm-t" x="24" y="44">ROMER</text><text class="sm-t" x="284" y="84" text-anchor="end">PRINCE ST · SOHO</text><text class="sm-ts" x="190" y="36" text-anchor="middle">DOWNTOWN</text></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;daddr=Prince+St+and+Broadway%2C+New+York&amp;dirflg=r" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;destination=Prince+St+and+Broadway%2C+New+York&amp;travelmode=transit" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>OMNY tap-to-pay, one tap per person per ride. Downtown platform signs: Brooklyn/Queens-bound A/C/E, Brooklyn-bound N/R via Canal.</div>
+            </div></div></div>
+          </div>
+        </li>
+
+        <li class="stop rv">
+          <span class="node"></span>
+          <div class="card">
+            <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+              <span class="t">10:30</span><h3>SoHo Shopping Run</h3>
+              <span class="chev">▾</span>
+            </div>
+            <div class="ntsign"><span class="lit"></span>Prince St &amp; Broadway corridor<span class="sep">·</span>Cast-iron blocks</div>
+            <div class="detail"><div><div class="dbody">
+              <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>≈3 hrs</b> with coffee breaks</div></div>
+              <div class="steps">
+                <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Prince St's north side, Broadway's south side — flagships, sample sales, vintage</div></div>
+                <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Coffee refuel around Broome &amp; Greene; break for a light lunch when the bags pile up</div></div>
+              </div>
+              <div class="stripmap" role="img" aria-label="Map: shopping loop around the Prince St and Broadway corridor"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="86" height="18" rx="3"/><text class="sm-bt" x="14" y="21">LOOP · 3 HRS</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-walk" cx="150" cy="52" r="24"/><circle class="sm-dst" cx="150" cy="28" r="3.5"/><circle class="sm-dst" cx="129" cy="64" r="3.5"/><circle class="sm-dst" cx="171" cy="64" r="3.5"/><text class="sm-ts" x="150" y="15" text-anchor="middle">PRINCE ST</text><text class="sm-ts" x="88" y="56" text-anchor="end">BROADWAY</text><text class="sm-ts" x="212" y="56" text-anchor="start">GREENE ST</text><text class="sm-ts" x="150" y="92" text-anchor="middle">SOHO</text><use href="#sm-walker" x="144" y="45" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Prince+St+and+Broadway%2C+New+York&amp;daddr=Greene+St+and+Broome+St%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Prince+St+and+Broadway%2C+New+York&amp;destination=Greene+St+and+Broome+St%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Bring tote bags — carriers win. The group splits by credit limit and regroups at midday.</div>
+            </div></div></div>
+          </div>
+        </li>
+
+        <li class="stop rv">
+          <span class="chip">Optional · Flexible</span><span class="node"></span>
+          <div class="card">
+            <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+              <span class="t">15:30</span><h3>Macy's · 5th Ave Windows · Winter Village</h3>
+              <span class="chev">▾</span>
+            </div>
+            <div class="ntsign"><span class="lit"></span>North on foot or N/R to 34th<span class="sep">·</span>Everyone home by 18:00</div>
+            <div class="detail"><div><div class="dbody">
+              <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>≈2 hrs</b> — mix and match</div></div>
+              <div class="steps">
+                <div class="drow"><span class="step-n">1</span><div><span class="lab">Option A</span>Macy's Herald Square (34th &amp; 6th) — nine floors and a holiday shop</div></div>
+                <div class="drow"><span class="step-n">2</span><div><span class="lab">Option B</span>5th Ave windows northbound, then Bryant Park Winter Village stalls as the lights come on</div></div>
+              </div>
+              <div class="stripmap" role="img" aria-label="Map: subway from Prince St up to 34th St for Macy's"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="104" height="18" rx="3"/><text class="sm-bt" x="14" y="21">R · 10 MIN RIDE</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><path class="sm-ride" d="M28 58 H272"/><path class="sm-stk" d="M140 52 v12"/><text class="sm-ts" x="140" y="80" text-anchor="middle">34 ST</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><circle cx="74" cy="40" r="10" fill="var(--c)"/><text class="sm-t sm-tw" x="74" y="44" text-anchor="middle">R</text><text class="sm-t" x="24" y="44">SOHO</text><text class="sm-t" x="284" y="84" text-anchor="end">MACY'S · 34TH</text><text class="sm-ts" x="190" y="36" text-anchor="middle">UPTOWN</text></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Prince+St+and+Broadway%2C+New+York&amp;daddr=Macy%27s+Herald+Square%2C+151+W+34th+St%2C+New+York&amp;dirflg=r" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Prince+St+and+Broadway%2C+New+York&amp;destination=Macy%27s+Herald+Square%2C+151+W+34th+St%2C+New+York&amp;travelmode=transit" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Winter Village around dusk is the move — lights and mulled wine. Hard stop: back at the hotel by 18:00.</div>
+            </div></div></div>
+          </div>
+        </li>
+
+        <li class="stop transfer rv">
+          <span class="chip">Subway ≈20 min ride</span><span class="node"></span>
+          <div class="card">
+            <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+              <span class="t">17:30</span><h3>Back to Romer · Rest &amp; Change</h3>
+              <span class="chev">▾</span>
+            </div>
+            <div class="ntsign"><span class="lit"></span>A/C/E from 34th–Penn or N/R from 34th–Herald Sq<span class="sep">·</span>~20 min ride</div>
+            <div class="detail"><div><div class="dbody">
+              <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>1 hr+</b> — shower, change, power nap</div></div>
+              <div class="steps">
+                <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Subway up from the 34th St area — A/C/E at 34th–Penn Station or N/R at 34th–Herald Sq, both to the 49th/50th St stops</div></div>
+                <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Tonight runs to 4 AM — charge phones, eat properly at dinner, hydrate</div></div>
+              </div>
+              <div class="stripmap" role="img" aria-label="Map: subway from 34th St-Penn Station back to 50th St"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="104" height="18" rx="3"/><text class="sm-bt" x="14" y="21">A · 10 MIN RIDE</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><path class="sm-ride" d="M28 58 H272"/><path class="sm-stk" d="M130 52 v12"/><text class="sm-ts" x="130" y="80" text-anchor="middle">42 ST</text><path class="sm-stk" d="M205 52 v12"/><text class="sm-ts" x="205" y="80" text-anchor="middle">50 ST</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><circle cx="74" cy="40" r="10" fill="var(--c)"/><text class="sm-t sm-tw" x="74" y="44" text-anchor="middle">A</text><text class="sm-t" x="24" y="44">34TH · PENN</text><text class="sm-t" x="284" y="84" text-anchor="end">ROMER</text></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Macy%27s+Herald+Square%2C+151+W+34th+St%2C+New+York&amp;daddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;dirflg=r" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Macy%27s+Herald+Square%2C+151+W+34th+St%2C+New+York&amp;destination=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;travelmode=transit" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Nobody wants a 1 AM burger. Dinner at 20:00 is the anchor of this plan.</div>
+            </div></div></div>
+          </div>
+        </li>
+
+        <li class="stop rv">
+          <span class="chip">Book for 6</span><span class="node"></span>
+          <div class="card">
+            <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+              <span class="t">20:00</span><h3>Group Dinner · Hell's Kitchen</h3>
+              <span class="chev">▾</span>
+            </div>
+            <div class="ntsign"><span class="lit"></span>9th Ave<span class="sep">·</span>Reservation for six, walking distance only</div>
+            <div class="detail"><div><div class="dbody">
+              <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>1 hr 30</b> — lively, not lingering</div></div>
+              <div class="steps">
+                <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Pick &amp; book a 9th Ave spot for 20:00 — Italian, steak or tapas, somewhere loud</div></div>
+                <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Keep it within a 5-min walk of the hotel — the club comes after</div></div>
+              </div>
+              <div class="stripmap" role="img" aria-label="Map: one block west to 9th Avenue"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="74" height="18" rx="3"/><text class="sm-bt" x="14" y="21">2 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-walk" cx="150" cy="52" r="24"/><circle class="sm-dst" cx="150" cy="28" r="3.5"/><circle class="sm-dst" cx="129" cy="64" r="3.5"/><circle class="sm-dst" cx="171" cy="64" r="3.5"/><text class="sm-ts" x="150" y="15" text-anchor="middle">9TH AVE</text><text class="sm-ts" x="88" y="56" text-anchor="end">W 52ND ST</text><text class="sm-ts" x="212" y="56" text-anchor="start">W 50TH ST</text><text class="sm-ts" x="150" y="92" text-anchor="middle">DINNER</text><use href="#sm-walker" x="144" y="45" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;daddr=9th+Ave+and+W+50th+St%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;destination=9th+Ave+and+W+50th+St%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Pace is a marathon, not a sprint. Water on the table, not just wine.</div>
+            </div></div></div>
+          </div>
+        </li>
+
+        <li class="stop rv">
+          <span class="chip warn">Guest List</span><span class="node"></span>
+          <div class="card">
+            <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+              <span class="t">23:30</span><h3>Club Night</h3>
+              <span class="chev">▾</span>
+            </div>
+            <div class="ntsign"><span class="lit"></span>Goes till 4 AM<span class="sep">·</span>Guest list / tickets ahead</div>
+            <div class="detail"><div><div class="dbody">
+              <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>Till late</b> — Sunday sleeps in by design</div></div>
+              <div class="steps">
+                <div class="drow"><span class="step-n">1</span><div><span class="lab">Option 1</span>Nebula — 135 W 41st St · 10 min from the hotel · Manhattan's biggest room</div></div>
+                <div class="drow"><span class="step-n">2</span><div><span class="lab">Option 2</span>Marquee — 289 10th Ave, Chelsea · main-room EDM heavyweight</div></div>
+                <div class="drow"><span class="step-n">3</span><div><span class="lab">Option 3</span>Somewhere Nowhere — rooftop, 112 W 25th St · house music with skyline views</div></div>
+                <div class="drow"><span class="step-n">4</span><div><span class="lab">Option 4</span>Slate — 54 W 21st St · built for groups: pool, games, then a dance floor</div></div>
+              </div>
+              <div class="stripmap" role="img" aria-label="Map: walk from 9th Avenue down to Nebula on 41st St"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">10 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">9TH AVE · W 50TH</text><text class="sm-t" x="284" y="84" text-anchor="end">NEBULA · W 41ST</text><text class="sm-t" x="150" y="44" text-anchor="middle">9TH AVE · SOUTH</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=9th+Ave+and+W+50th+St%2C+New+York&amp;daddr=Nebula%2C+135+W+41st+St%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=9th+Ave+and+W+50th+St%2C+New+York&amp;destination=Nebula%2C+135+W+41st+St%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Pick one and guest-list or buy ahead — Saturday queues are real. Split cabs home as pairs; water before bed; nobody schedules anything for Sunday morning.</div>
+            </div></div></div>
+          </div>
+        </li>
+      </ol>
+      <div class="notice rv" role="note">
+        <span class="ex">!</span>
+        <div><div class="nt">Service Notice · Book Ahead</div>
+        <div class="nb">Clubs: guest list or tickets ahead for Nebula / Marquee / Somewhere Nowhere / Slate — Saturday-night entry without a list is a coin toss. Dinner: book a 9th Ave table for six.</div></div>
+      </div>
+      <div class="term rv"><i></i>End of service · Fork B — last train is a cab; Sunday sleeps in</div>
+    </div>
+  </section>
+
+  <!-- ================= DAY 5 ================= -->
+  <section class="day" id="day5" style="--c:var(--purple)" aria-label="Day 5">
+    <div class="sec-head rv"><h2>Day 5</h2><span class="k">7 Line</span></div>
+    <div class="rule rv"></div>
+    <div class="day-head rv">
+      <span class="big"><span class="bl lg bc-purple">7</span></span>
+      <h2>Home</h2>
+      <span class="date">Sun 22 Nov</span>
+    </div>
+    <p class="day-sub rv">Flushing-bound finale · bags-free High Line · VS10 home at 18:30</p>
+
+    <div class="notice rv" role="note">
+      <span class="ex">!</span>
+      <div><div class="nt">Service Notice · Sunday Plan</div>
+      <div class="nb">Flights confirmed — VS10 home: JFK T4 18:30 → LHR 06:45 Mon. Still TBC: the wander pick (High Line planned, Central Park if cold or wet) and Saturday's fork (crew vote).</div></div>
+    </div>
+
+    <ol class="line">
+      <li class="stop rv">
+        <span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">09:00</span><h3>Slow Breakfast · Hell's Kitchen</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Last NYC breakfast<span class="sep">·</span>9th Ave strip</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>1 hr 30</b> — slow, last one of the trip</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Pick the busiest 9th Ave brunch spot between 44th–52nd — one block west</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Eggs, pancakes, coffee refills — argue about the best thing you did all week</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: one block west to 9th Avenue"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="62" height="18" rx="3"/><text class="sm-bt" x="14" y="21">AT VENUE</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-walk" cx="150" cy="52" r="24"/><circle class="sm-dst" cx="150" cy="28" r="3.5"/><circle class="sm-dst" cx="129" cy="64" r="3.5"/><circle class="sm-dst" cx="171" cy="64" r="3.5"/><text class="sm-ts" x="150" y="15" text-anchor="middle">9TH AVE</text><text class="sm-ts" x="88" y="56" text-anchor="end">W 52ND ST</text><text class="sm-ts" x="212" y="56" text-anchor="start">W 51ST ST</text><text class="sm-ts" x="150" y="92" text-anchor="middle">BREAKFAST</text><use href="#sm-walker" x="144" y="45" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;daddr=9th+Ave+and+W+51st+St%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;destination=9th+Ave+and+W+51st+St%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Pack before breakfast — check-out is at 11:00 and the cab leaves at 14:45.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">11:00</span><h3>Check-out · Bags at the Desk</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Rooms released by <b>11:00</b><span class="sep">·</span>Bags stay with the concierge</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>30 min</b> — settle up and drop the bags</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Front desk by 11:00 — settle incidentals, close out the six rooms</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Step</span>Leave every bag with the concierge — standard NYC practice; wander hands-free, collect at 14:30</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: check-out at the hotel, bags with the concierge"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="62" height="18" rx="3"/><text class="sm-bt" x="14" y="21">AT VENUE</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-walk" cx="150" cy="52" r="24"/><circle class="sm-dst" cx="150" cy="28" r="3.5"/><circle class="sm-dst" cx="129" cy="64" r="3.5"/><circle class="sm-dst" cx="171" cy="64" r="3.5"/><text class="sm-ts" x="150" y="15" text-anchor="middle">8TH AVE</text><text class="sm-ts" x="88" y="56" text-anchor="end">9TH AVE</text><text class="sm-ts" x="212" y="56" text-anchor="start">W 51ST ST</text><text class="sm-ts" x="150" y="92" text-anchor="middle">CONCIERGE</text><use href="#sm-walker" x="144" y="45" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=9th+Ave+and+W+51st+St%2C+New+York&amp;daddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=9th+Ave+and+W+51st+St%2C+New+York&amp;destination=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Keep one warm layer and the chargers in a day bag — planes are cold and sockets are gold.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop transfer rv">
+        <span class="chip tbc">Planned · TBC</span><span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">11:15</span><h3>Final Wander · High Line (planned)</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Spur at W 30th–34th<span class="sep">·</span>Hudson Yards end · bags-free</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>≈2 hr 30</b> — window before the cab</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Planned</span>Cab 10 min or walk 25 to the High Line spur at W 30th–34th (Hudson Yards end), stroll south along the old rail line — Hudson views</div></div>
+              <div class="drow"><span class="step-n">2</span><div><span class="lab">Alternative</span>Cold or wet? Swap for a last Central Park loop instead — crew decides at breakfast</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: walk from the hotel to the High Line"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="80" height="18" rx="3"/><text class="sm-bt" x="14" y="21">25 MIN WALK</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walk" d="M36 58 H264"/><text class="sm-t" x="28" y="84">ROMER</text><text class="sm-t" x="284" y="84" text-anchor="end">HIGH LINE · 30TH</text><text class="sm-t" x="150" y="44" text-anchor="middle">10TH AVE → W 30TH</text><use href="#sm-walker" x="58" y="30" width="12" height="18"/></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;daddr=The+High+Line+at+W+30th+St%2C+New+York&amp;dirflg=w" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;destination=The+High+Line+at+W+30th+St%2C+New+York&amp;travelmode=walking" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note tbc"><b>TBC — To Be Confirmed</b>The wander is the one open choice today — High Line planned, Central Park the cold/wet swap. Back for bags by 14:30 either way.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop rv">
+        <span class="chip">Leave 14:45</span><span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">14:45</span><h3>Cab to JFK T4</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Leave <b>14:45–15:00</b><span class="sep">·</span>Arrive ≈15:30 · 3h before wheels-up</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>45–60 min</b> — Sunday traffic is kind</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Two cabs from the 8th Ave rank at 14:45 — "JFK Terminal 4, Virgin Atlantic" — flat fare + tolls</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: cab from the hotel to JFK"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="98" height="18" rx="3"/><text class="sm-bt" x="14" y="21">45–60 MIN CAB</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="28" cy="58" r="8"/><circle class="sm-orgd" cx="28" cy="58" r="3"/><circle class="sm-dst" cx="272" cy="58" r="8"/><path class="sm-walkf" d="M36 58 H264"/><text class="sm-t" x="28" y="84">ROMER · 8TH AVE</text><text class="sm-t" x="284" y="84" text-anchor="end">JFK · T4</text><text class="sm-t" x="150" y="44" text-anchor="middle">FLAT FARE + TOLLS</text></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;daddr=John+F+Kennedy+International+Airport%2C+New+York&amp;dirflg=d" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=Romer+Hell%27s+Kitchen%2C+851+8th+Ave%2C+New+York&amp;destination=John+F+Kennedy+International+Airport%2C+New+York&amp;travelmode=driving" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Check-in desks close ~60 min before departure — 15:30 arrival is comfortable. Customs at JFK rewards the organised.</div>
+          </div></div></div>
+        </div>
+      </li>
+
+      <li class="stop plane rv">
+        <span class="chip">Terminates Here</span><span class="node"></span>
+        <div class="card">
+          <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="t">18:30</span><h3>VS10 · JFK T4 → LHR</h3>
+            <span class="chev">▾</span>
+          </div>
+          <div class="ntsign"><span class="lit"></span>Wheels up <b>18:30</b><span class="sep">·</span>Lands LHR 06:45 Mon</div>
+          <div class="detail"><div><div class="dbody">
+            <div class="drow"><span class="ic">◷</span><div><span class="lab">Duration</span><b>≈7 hr</b> — sleep on the plane, home by Monday breakfast</div></div>
+            <div class="steps">
+              <div class="drow"><span class="step-n">1</span><div><span class="lab">Step</span>Check in at T4 from ~15:30 — boarding from ~17:30; keep the group together past security</div></div>
+            </div>
+            <div class="stripmap" role="img" aria-label="Map: evening flight from JFK to London Heathrow"><svg viewBox="0 0 300 96" aria-hidden="true" focusable="false"><rect class="sm-bdg" x="8" y="8" width="92" height="18" rx="3"/><text class="sm-bt" x="14" y="21">7H 15M FLIGHT</text><path class="sm-arrow" d="M284 5 l5 10 h-10 z"/><text class="sm-ts" x="284" y="28" text-anchor="middle">N</text><circle class="sm-org" cx="32" cy="66" r="8"/><circle class="sm-orgd" cx="32" cy="66" r="3"/><circle class="sm-dst" cx="268" cy="66" r="8"/><path class="sm-air" d="M40 66 Q150 18 260 66"/><use href="#sm-plane" x="142" y="24" width="16" height="16"/><text class="sm-t" x="32" y="88">JFK</text><text class="sm-t" x="268" y="88" text-anchor="end">LHR</text></svg><span class="nts" aria-hidden="true">NOT TO SCALE</span></div><div class="mlnks"><a class="mlnk" href="https://maps.apple.com/?saddr=John+F+Kennedy+International+Airport%2C+New+York&amp;daddr=London+Heathrow+Airport+Terminal+3&amp;dirflg=r" target="_blank" rel="noopener"><i></i>Apple Maps</a><a class="mlnk" href="https://www.google.com/maps/dir/?api=1&amp;origin=John+F+Kennedy+International+Airport%2C+New+York&amp;destination=London+Heathrow+Airport+Terminal+3&amp;travelmode=transit" target="_blank" rel="noopener"><i></i>Google Maps</a></div><div class="note"><b>Crew Note</b>Thank you for riding NYC Transit with us. Same time next year? All in favour: six.</div>
+          </div></div></div>
+        </div>
+      </li>
+    </ol>
+    <div class="term rv"><i></i>End of line · Day 5 — this train terminates at LONDON HEATHROW</div>
+  </section>
+
+</main>
+
+<footer>
+  <b>Last Update — 20 Sep 2026</b><br>
+  Sources: venue &amp; box-office sites · MTA service info · Virgin Atlantic schedule · crew consensus<br>
+  Flights confirmed: VS9 out 11:20 · VS10 home 18:30 · TBC: Sunday's wander pick (High Line planned) · Saturday fork — default Option A until the crew votes<br>
+  Not affiliated with the MTA — obviously · Swipe ← → or use arrow keys to change days · Built for six riders
+</footer>
+
+<nav id="tabbar" aria-label="Trip navigation">
+  <a class="tbn" data-nav="0" aria-selected="false" aria-label="Route map overview" href="#map"><span class="bl md bc-black">M</span><span class="tl">Map</span></a>
+  <a class="tbn" data-nav="1" aria-selected="false" aria-label="Day 1" href="#day1"><span class="bl md bc-blue">1</span><span class="tl">Wed</span></a>
+  <a class="tbn" data-nav="2" aria-selected="false" aria-label="Day 2" href="#day2"><span class="bl md bc-red">2</span><span class="tl">Thu</span></a>
+  <a class="tbn" data-nav="3" aria-selected="false" aria-label="Day 3" href="#day3"><span class="bl md bc-yellow">3</span><span class="tl">Fri</span></a>
+  <a class="tbn" data-nav="4" aria-selected="false" aria-label="Day 4" href="#day4"><span class="bl md bc-green">4</span><span class="tl">Sat</span></a>
+  <a class="tbn" data-nav="5" aria-selected="false" aria-label="Day 5" href="#day5"><span class="bl md bc-purple">5</span><span class="tl">Sun</span></a>
+</nav>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  "use strict";
+  /* any uncaught error (now or later, e.g. in a handler) reverts to the fully-visible no-JS state */
+  function failSafe(){document.documentElement.classList.remove('js');}
+  window.addEventListener('error',failSafe);
+
+  /* ---------- navigation targets: map overview + 5 days ---------- */
+  var navT=[], tabs=[], days=[], segs=[], current=0;
+  try{
+    var mapSec=document.getElementById('map');
+    days=[].slice.call(document.querySelectorAll('.day'));
+    navT=mapSec?[mapSec].concat(days):days.slice();
+    tabs=[].slice.call(document.querySelectorAll('#tabbar .tbn'));
+    segs=[].slice.call(document.querySelectorAll('#progress .seg i'));
+  }catch(e){}
+
+  function goIdx(i,focus){
+    if(i<0)i=0; if(i>navT.length-1)i=navT.length-1;
+    current=i;
+    try{navT[i].scrollIntoView({behavior:'smooth',block:'start'});}catch(e){}
+    if(focus){try{navT[i].setAttribute('tabindex','-1');navT[i].focus({preventScroll:true});}catch(e){}}
+  }
+  function setActive(i){
+    current=i;
+    tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===i?'true':'false');});
+  }
+
+  try{ tabs.forEach(function(t,i){t.addEventListener('click',function(ev){ev.preventDefault();goIdx(i);});}); }catch(e){}
+
+  /* map rows: native #dayN hrefs work without JS; JS enhances with smooth paging */
+  try{
+    [].slice.call(document.querySelectorAll('.maprow')).forEach(function(r){
+      r.addEventListener('click',function(ev){
+        ev.preventDefault();
+        var i=+r.getAttribute('data-day');goIdx(i+1);
+      });
+    });
+  }catch(e){}
+
+  /* arrow keys */
+  try{
+    document.addEventListener('keydown',function(ev){
+      if(ev.key==='ArrowRight'){ev.preventDefault();goIdx(current+1);}
+      else if(ev.key==='ArrowLeft'){ev.preventDefault();goIdx(current-1);}
+    });
+  }catch(e){}
+
+  /* swipe */
+  try{
+    var sx=0,sy=0,st=0;
+    document.addEventListener('touchstart',function(e){
+      var t=e.touches[0];sx=t.clientX;sy=t.clientY;st=Date.now();
+    },{passive:true});
+    document.addEventListener('touchend',function(e){
+      var t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;
+      if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.4&&Date.now()-st<600){
+        goIdx(current+(dx<0?1:-1));
+      }
+    },{passive:true});
+  }catch(e){}
+
+  /* reveal on scroll — if IntersectionObserver is unavailable, reveal everything immediately */
+  try{
+    if('IntersectionObserver' in window){
+      var rvo=new IntersectionObserver(function(es){
+        es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');rvo.unobserve(en.target);}});
+      },{threshold:.12});
+      [].slice.call(document.querySelectorAll('.rv')).forEach(function(el){rvo.observe(el);});
+    }else{
+      [].slice.call(document.querySelectorAll('.rv')).forEach(function(el){el.classList.add('in');});
+    }
+  }catch(e){
+    try{[].slice.call(document.querySelectorAll('.rv')).forEach(function(el){el.classList.add('in');});}catch(e2){}
+  }
+
+  /* active section + scroll-spy */
+  try{
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(en){if(en.isIntersecting){setActive(navT.indexOf(en.target));}});
+      },{rootMargin:'-40% 0px -55% 0px'});
+      navT.forEach(function(d){io.observe(d);});
+    }
+  }catch(e){}
+
+  /* segmented progress fill over the five days */
+  try{
+    function fill(){
+      var vh=window.innerHeight,probe=vh*0.35;
+      days.forEach(function(d,i){
+        var r=d.getBoundingClientRect(),f;
+        if(r.top>probe)f=0;
+        else if(r.bottom<probe)f=1;
+        else f=(probe-r.top)/r.height;
+        segs[i].style.transform='scaleX('+Math.max(0,Math.min(1,f)).toFixed(3)+')';
+      });
+    }
+    var ticking=false;
+    window.addEventListener('scroll',function(){
+      if(!ticking){ticking=true;requestAnimationFrame(function(){fill();ticking=false;});}
+    },{passive:true});
+    window.addEventListener('resize',fill);
+    fill();
+  }catch(e){}
+
+  /* expand / collapse cards */
+  try{
+    [].slice.call(document.querySelectorAll('.card-head')).forEach(function(h){
+      function toggle(){
+        var s=h.closest('.stop'),open=s.classList.toggle('open');
+        h.setAttribute('aria-expanded',open?'true':'false');
+      }
+      h.addEventListener('click',toggle);
+      h.addEventListener('keydown',function(ev){
+        if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();toggle();}
+      });
+    });
+  }catch(e){}
+
+  /* Saturday fork toggle — persisted in localStorage (fallback: in-memory only) */
+  try{
+    var day4=document.getElementById('day4');
+    var forkA=document.getElementById('forkA'),forkB=document.getElementById('forkB');
+    var ftBtns=[].slice.call(document.querySelectorAll('.ft-btns button'));
+    var ftState=document.getElementById('forkState');
+    var KEY='nyc26-fork',mem='a';
+    function store(v){mem=v;try{localStorage.setItem(KEY,v);}catch(e){}}
+    function recall(){try{var v=localStorage.getItem(KEY);return v==='a'||v==='b'?v:mem;}catch(e){return mem;}}
+    function setFork(f){
+      if(f!=='a'&&f!=='b')f='a';
+      if(day4)day4.setAttribute('data-fork',f);
+      ftBtns.forEach(function(b){b.setAttribute('aria-selected','false');b.setAttribute('aria-pressed',b.getAttribute('data-fork')===f?'true':'false');});
+      if(ftState)ftState.textContent=f==='a'?'Option A':'Option B';
+      var shown=f==='a'?forkA:forkB;
+      if(shown)[].slice.call(shown.querySelectorAll('.rv')).forEach(function(el){el.classList.add('in');});
+      store(f);
+    }
+    ftBtns.forEach(function(b){b.addEventListener('click',function(){setFork(b.getAttribute('data-fork'));});});
+    setFork(recall());
+  }catch(e){}
+
+  /* duplicate ticker content for seamless loop (before grabbing refs, so both copies tick) */
+  try{
+    var roll=document.getElementById('tickerRoll');
+    if(roll)roll.innerHTML+=roll.innerHTML;
+  }catch(e){}
+
+  /* countdown to Wed 18 Nov 2026 (local midnight); static markup shows the date when JS is off */
+  try{
+    var target=new Date(2026,10,18,0,0,0).getTime();
+    function gel(id){return document.getElementById(id);}
+    var elD=gel('cdD'),elH=gel('cdH'),elM=gel('cdM'),elS=gel('cdS'),
+        lbD=gel('cdDl'),lbH=gel('cdHl'),lbM=gel('cdMl'),lbS=gel('cdSl');
+    function setEl(el,v){if(el)el.textContent=v;}
+    function pad(n){return (n<10?'0':'')+n;}
+    function tick(){
+      var diff=target-Date.now();
+      if(diff<=0){
+        setEl(elD,'00');setEl(elH,'00');setEl(elM,'00');setEl(elS,'00');
+        setEl(lbD,'DAYS');setEl(lbH,'HRS');setEl(lbM,'MIN');setEl(lbS,'SEC');
+        return;
+      }
+      var dd=Math.floor(diff/864e5),hh=Math.floor(diff/36e5)%24,
+          mm=Math.floor(diff/6e4)%60,ss=Math.floor(diff/1e3)%60;
+      setEl(elD,pad(dd));setEl(elH,pad(hh));setEl(elM,pad(mm));setEl(elS,pad(ss));
+      setEl(lbD,'DAYS');setEl(lbH,'HRS');setEl(lbM,'MIN');setEl(lbS,'SEC');
+    }
+    tick();setInterval(tick,1000);
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
