@@ -29,10 +29,10 @@
     'Rockefeller Center':[{lat:40.7587,lon:-73.9787,radius:450}],
     'Steak Dinner · Strip House Midtown':[{lat:40.7549,lon:-73.9806,radius:350}],
     'Blue Bottle Coffee · 150 Greenwich St':[{lat:40.7106,lon:-74.0120,radius:350}],
-    'Collect Sightseeing Cruise Tickets':[{lat:40.7036,lon:-74.0152,radius:1200}],
+    'Collect Sightseeing Cruise Tickets':[{lat:40.7036,lon:-74.0152,radius:250}],
     '9/11 Memorial & Museum':[{lat:40.7115,lon:-74.0133,radius:550}],
     'World Trade Center & The Oculus':[{lat:40.7127,lon:-74.0119,radius:450}],
-    'Statue of Liberty Sightseeing Cruise':[{lat:40.7036,lon:-74.0152,radius:1200}],
+    'Statue of Liberty Sightseeing Cruise':[{lat:40.7036,lon:-74.0152,radius:250}],
     "Lunch · Seaport or Katz's Delicatessen": [{lat:40.7065,lon:-74.0039,radius:700},{lat:40.7146,lon:-73.9874,radius:500}],
     'Chinatown Walk':[{lat:40.7158,lon:-73.9970,radius:650}],
     'Little Italy · Coffee & Cannoli':[{lat:40.7191,lon:-73.9973,radius:450}],
@@ -53,6 +53,61 @@
     'Toy Store · FAO Schwarz':[{lat:40.7586,lon:-73.9787,radius:450}],
     'Cab to JFK T4':[{lat:40.7624,lon:-73.9872,radius:450},{lat:40.6413,lon:-73.7781,radius:2500}],
     'VS10 · JFK T4 → LHR':[{lat:40.6413,lon:-73.7781,radius:2500},{lat:51.4700,lon:-0.4543,radius:2500}]
+  };
+  var STAGE_TIMING={
+    'VS9 · LHR T3 → JFK T4':{before:120,duration:480},
+    'Land JFK T4 · Immigration & Bags':{before:45,duration:75},
+    'Yellow Cab · JFK → Manhattan':{before:30,duration:75},
+    "Romer Hell's Kitchen · Check-in":{before:30,duration:45},
+    '9th Ave Drinks Crawl · W 44th–52nd':{before:30,duration:120},
+    'Coffee & Breakfast · Midtown':{before:30,duration:60},
+    '5th Avenue · Shops & Landmarks':{before:30,duration:60},
+    "St Patrick's Cathedral":{before:30,duration:45},
+    'Central Park · South End':{before:45,duration:45},
+    'Horse & Carriage Ride':{before:30,duration:60},
+    'Lunch · Central Park & Midtown':{before:30,duration:90},
+    'Rockefeller Center':{before:30,duration:120},
+    'Steak Dinner · Strip House Midtown':{before:30,duration:120},
+    'Blue Bottle Coffee · 150 Greenwich St':{before:30,duration:45},
+    'Collect Sightseeing Cruise Tickets':{before:30,duration:45},
+    '9/11 Memorial & Museum':{before:30,duration:150},
+    'World Trade Center & The Oculus':{before:30,duration:60},
+    'Statue of Liberty Sightseeing Cruise':{before:30,duration:90},
+    "Lunch · Seaport or Katz's Delicatessen":{before:45,duration:60},
+    'Chinatown Walk':{before:30,duration:60},
+    'Little Italy · Coffee & Cannoli':{before:30,duration:45},
+    'Phoenix Palace · Chinatown':{before:30,duration:90},
+    'Leeds United vs Chelsea':{before:30,duration:120},
+    'Bryant Park Winter Village':{before:30,duration:90},
+    'Everyone · Free Afternoon':{matchByTime:false},
+    'Knicks vs Portland Trail Blazers':{before:30,duration:150},
+    'Girls → Chicago (Evening Show)':{before:30,duration:150},
+    'Optional Late Night · Clubs or Drinks':{matchByTime:false},
+    "Coffee · Hell's Kitchen":{before:30,duration:30},
+    'SoHo Shopping Run':{before:30,duration:180},
+    "Macy's · 5th Ave Windows · Winter Village":{before:30,duration:120},
+    'Back to Romer · Rest & Change':{before:30,duration:60},
+    "Group Dinner · Hell's Kitchen":{before:30,duration:90},
+    'Optional Club Night':{matchByTime:false},
+    "Slow Breakfast · Hell's Kitchen":{before:30,duration:90},
+    'Check-out · Bags at the Desk':{before:30,duration:30},
+    'Final Wander · High Line (planned)':{before:30,duration:225},
+    'Toy Store · FAO Schwarz':{before:30,duration:60},
+    'Cab to JFK T4':{before:30,duration:60},
+    'VS10 · JFK T4 → LHR':{before:120,duration:420}
+  };
+  var TIME_FALLBACK_STAGES={
+    'VS9 · LHR T3 → JFK T4':true,
+    'Yellow Cab · JFK → Manhattan':true,
+    'Horse & Carriage Ride':true,
+    'Central Park · South End':true,
+    'Statue of Liberty Sightseeing Cruise':true,
+    'Final Wander · High Line (planned)':true,
+    'Cab to JFK T4':true,
+    'VS10 · JFK T4 → LHR':true,
+    '9th Ave Drinks Crawl · W 44th–52nd':true,
+    '5th Avenue · Shops & Landmarks':true,
+    'Lunch · Central Park & Midtown':true
   };
   var els={
     input:document.getElementById('photoFiles'),
@@ -114,7 +169,7 @@
         if(start===null)return;
         var id=day.id+'-'+slug(title);
         if(stages.some(function(s){return s.id===id;}))return;
-        stages.push({id:id,dayId:day.id,date:info.date,title:title,start:start,startLabel:displayTime(start),locations:STAGE_LOCATIONS[title]||[]});
+        stages.push({id:id,dayId:day.id,date:info.date,title:title,start:start,startLabel:displayTime(start),locations:STAGE_LOCATIONS[title]||[],timing:STAGE_TIMING[title]||{before:30,duration:45,matchByTime:true}});
       });
     });
     stages.sort(function(a,b){return a.date===b.date?a.start-b.start:a.date<b.date?-1:1;});
@@ -135,11 +190,20 @@
     return match[1]+'-'+match[2]+'-'+match[3]+'T'+match[4]+':'+match[5]+':'+(match[6]||'00');
   }
 
+  function timeCompatible(stage,minutes){
+    if(minutes===null||minutes===undefined)return true;
+    var timing=stage.timing;
+    if(timing.matchByTime===false)return false;
+    var before=timing.before===undefined?30:timing.before;
+    var duration=timing.duration===undefined?45:timing.duration;
+    return minutes>=stage.start-before&&minutes<=stage.start+duration;
+  }
+
   function matchCaptured(captured){
     var dayId=captured?dayForDate(captured.slice(0,10)):null;
     if(!dayId)return {dayId:null,stage:null};
     var minutes=timeMinutes(captured.slice(11,16));
-    var candidates=state.stages.filter(function(s){return s.dayId===dayId;});
+    var candidates=state.stages.filter(function(s){return s.dayId===dayId&&timeCompatible(s,minutes);});
     var stage=null;
     candidates.forEach(function(s){if(s.start<=minutes)stage=s;});
     if(!stage&&candidates.length)stage=candidates[0];
@@ -161,11 +225,13 @@
     return 6371*2*Math.atan2(Math.sqrt(h),Math.sqrt(1-h));
   }
 
-  function matchGps(gps,dayId){
+  function matchGps(gps,dayId,minutes){
     if(!gps)return null;
+    if(minutes!==null&&minutes!==undefined&&!dayId)return null;
     var best=null;
     state.stages.forEach(function(stage){
       if(dayId&&stage.dayId!==dayId)return;
+      if(!timeCompatible(stage,minutes))return;
       stage.locations.forEach(function(location){
         var distance=distanceKm(gps,location);
         if(distance<=location.radius/1000&&(!best||distance<best.distance))best={stage:stage,distance:distance};
@@ -262,10 +328,12 @@
       var match=matchCaptured(item.capturedAt);
       item.dayId=match.dayId;
       item.stage=match.stage;
-      var geoMatch=matchGps(item.gps,item.dayId);
+      var geoMatch=matchGps(item.gps,item.dayId,item.capturedAt?timeMinutes(item.capturedAt.slice(11,16)):null);
       if(geoMatch){
         item.stage=geoMatch.stage;
         item.dayId=geoMatch.stage.dayId;
+      }else if(item.gps&&item.stage&&!TIME_FALLBACK_STAGES[item.stage.title]){
+        item.stage=null;
       }
       item.locationSource=geoMatch?'exif-gps':item.stage?'exif-datetime':item.gps?'exif-gps-unmatched':'exif-datetime-unmatched';
       if(item.stage){
@@ -454,9 +522,13 @@
     return photo.captured_at?dayForDate(String(photo.captured_at).slice(0,10)):null;
   }
 
+  function photoTime(photo){
+    return String(photo.captured_at||photo.created_at||'');
+  }
+
   function photoGrid(photos){
     var grid=node('div','photo-grid');
-    photos.forEach(function(photo){
+    photos.slice().sort(function(a,b){return photoTime(a).localeCompare(photoTime(b));}).forEach(function(photo){
       var link=node('a','photo-shot');
       link.href=photo.public_url;
       link.target='_blank';
@@ -512,7 +584,11 @@
       head.appendChild(node('h3','',group.dayId?DAY_INFO[group.dayId].label:'More Crew Photos'));
       head.appendChild(node('span','',group.photos.length+' photo'+(group.photos.length===1?'':'s')));
       day.appendChild(head);
-      Object.keys(group.stages).forEach(function(stageKey){
+      Object.keys(group.stages).sort(function(a,b){
+        var timeA=group.stages[a].map(photoTime).sort()[0]||'';
+        var timeB=group.stages[b].map(photoTime).sort()[0]||'';
+        return timeA.localeCompare(timeB);
+      }).forEach(function(stageKey){
         var photos=group.stages[stageKey];
         var stage=stageFor(photos[0]);
         var card=node('article','wall-stage');
