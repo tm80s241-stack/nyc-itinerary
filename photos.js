@@ -33,7 +33,9 @@
   }
   function baseUrl(){return config.url.replace(/\/+$/,'');}
   function authHeaders(){
-    return {apikey:config.anonKey,Authorization:'Bearer '+config.anonKey};
+    var headers={apikey:config.anonKey};
+    if(config.anonKey.indexOf('eyJ')===0)headers.Authorization='Bearer '+config.anonKey;
+    return headers;
   }
   function node(tag,cls,text){
     var n=document.createElement(tag);
