@@ -240,6 +240,16 @@
     return best;
   }
 
+  function matchLandmark(gps){
+    if(!gps)return null;
+    var best=null;
+    (window.NYC_LANDMARKS||[]).forEach(function(spot){
+      var distance=distanceKm(gps,spot);
+      if(distance<=spot.radius/1000&&(!best||distance<best.distance))best={name:spot.name,distance:distance};
+    });
+    return best;
+  }
+
   var lastGeocode=0;
   async function reverseLocation(gps){
     var wait=Math.max(0,1100-(Date.now()-lastGeocode));
@@ -339,8 +349,14 @@
       if(item.stage){
         item.locationName=item.stage.title;
       }else if(item.gps){
-        try{item.locationName=await reverseLocation(item.gps)||gpsLabel(item.gps);}
-        catch(e){item.locationName=gpsLabel(item.gps);}
+        var landmark=matchLandmark(item.gps);
+        if(landmark){
+          item.locationName=landmark.name;
+          item.locationSource='exif-landmark';
+        }else{
+          try{item.locationName=await reverseLocation(item.gps)||gpsLabel(item.gps);}
+          catch(e){item.locationName=gpsLabel(item.gps);}
+        }
       }
       item.status='ready';
     }catch(error){
@@ -698,6 +714,7 @@
     renderQueue();
     renderWall();
     injectExtras();
+    if(window.NYCJourneyRefresh)window.NYCJourneyRefresh();
   }
 
   async function loadPhotos(){
@@ -727,6 +744,7 @@
   els.upload.addEventListener('click',uploadSelected);
 
   els.config.style.display=configured()?'none':'flex';
+  window.NYCPhotoData=state;
   buildStages();
   updateActions();
   renderWall();
