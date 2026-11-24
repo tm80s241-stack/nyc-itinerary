@@ -14,6 +14,46 @@
     day4:{date:'2026-11-21',label:'Day 4 · Choose Your Line'},
     day5:{date:'2026-11-22',label:'Day 5 · Home'}
   };
+  var STAGE_LOCATIONS={
+    'VS9 · LHR T3 → JFK T4':[{lat:51.4700,lon:-0.4543,radius:2500},{lat:40.6413,lon:-73.7781,radius:2500}],
+    'Land JFK T4 · Immigration & Bags':[{lat:40.6413,lon:-73.7781,radius:2500}],
+    'Yellow Cab · JFK → Manhattan':[{lat:40.6413,lon:-73.7781,radius:2500},{lat:40.7624,lon:-73.9872,radius:400}],
+    "Romer Hell's Kitchen · Check-in":[{lat:40.7624,lon:-73.9872,radius:400}],
+    '9th Ave Drinks Crawl · W 44th–52nd':[{lat:40.7606,lon:-73.9918,radius:700}],
+    'Coffee & Breakfast · Midtown':[{lat:40.7624,lon:-73.9872,radius:600}],
+    '5th Avenue · Shops & Landmarks':[{lat:40.7625,lon:-73.9745,radius:600}],
+    "St Patrick's Cathedral":[{lat:40.7586,lon:-73.9755,radius:350}],
+    'Central Park · South End':[{lat:40.7669,lon:-73.9753,radius:900}],
+    'Horse & Carriage Ride':[{lat:40.7669,lon:-73.9753,radius:1000}],
+    'Lunch · Central Park & Midtown':[{lat:40.7681,lon:-73.9819,radius:1000}],
+    'Rockefeller Center':[{lat:40.7587,lon:-73.9787,radius:450}],
+    'Steak Dinner · Strip House Midtown':[{lat:40.7549,lon:-73.9806,radius:350}],
+    'Blue Bottle Coffee · 150 Greenwich St':[{lat:40.7106,lon:-74.0120,radius:350}],
+    'Collect Sightseeing Cruise Tickets':[{lat:40.7036,lon:-74.0152,radius:1200}],
+    '9/11 Memorial & Museum':[{lat:40.7115,lon:-74.0133,radius:550}],
+    'World Trade Center & The Oculus':[{lat:40.7127,lon:-74.0119,radius:450}],
+    'Statue of Liberty Sightseeing Cruise':[{lat:40.7036,lon:-74.0152,radius:1200}],
+    "Lunch · Seaport or Katz's Delicatessen": [{lat:40.7065,lon:-74.0039,radius:700},{lat:40.7146,lon:-73.9874,radius:500}],
+    'Chinatown Walk':[{lat:40.7158,lon:-73.9970,radius:650}],
+    'Little Italy · Coffee & Cannoli':[{lat:40.7191,lon:-73.9973,radius:450}],
+    'Phoenix Palace · Chinatown':[{lat:40.7168,lon:-73.9939,radius:350}],
+    'Leeds United vs Chelsea':[{lat:40.7486,lon:-73.9855,radius:450}],
+    'Bryant Park Winter Village':[{lat:40.7536,lon:-73.9832,radius:550}],
+    'Everyone · Free Afternoon':[{lat:40.7624,lon:-73.9872,radius:1000}],
+    'Knicks vs Portland Trail Blazers':[{lat:40.7505,lon:-73.9934,radius:550}],
+    'Girls → Chicago (Evening Show)':[{lat:40.7612,lon:-73.9853,radius:450}],
+    "Coffee · Hell's Kitchen":[{lat:40.7624,lon:-73.9872,radius:550}],
+    'SoHo Shopping Run':[{lat:40.7233,lon:-74.0000,radius:750}],
+    "Macy's · 5th Ave Windows · Winter Village":[{lat:40.7500,lon:-73.9880,radius:1000}],
+    'Back to Romer · Rest & Change':[{lat:40.7624,lon:-73.9872,radius:450}],
+    "Group Dinner · Hell's Kitchen":[{lat:40.7624,lon:-73.9918,radius:700}],
+    "Slow Breakfast · Hell's Kitchen":[{lat:40.7624,lon:-73.9918,radius:700}],
+    'Check-out · Bags at the Desk':[{lat:40.7624,lon:-73.9872,radius:400}],
+    'Final Wander · High Line (planned)':[{lat:40.7520,lon:-74.0040,radius:1500}],
+    'Toy Store · FAO Schwarz':[{lat:40.7586,lon:-73.9787,radius:450}],
+    'Cab to JFK T4':[{lat:40.7624,lon:-73.9872,radius:450},{lat:40.6413,lon:-73.7781,radius:2500}],
+    'VS10 · JFK T4 → LHR':[{lat:40.6413,lon:-73.7781,radius:2500},{lat:51.4700,lon:-0.4543,radius:2500}]
+  };
   var els={
     input:document.getElementById('photoFiles'),
     drop:document.getElementById('photoDrop'),
@@ -74,7 +114,7 @@
         if(start===null)return;
         var id=day.id+'-'+slug(title);
         if(stages.some(function(s){return s.id===id;}))return;
-        stages.push({id:id,dayId:day.id,date:info.date,title:title,start:start,startLabel:displayTime(start)});
+        stages.push({id:id,dayId:day.id,date:info.date,title:title,start:start,startLabel:displayTime(start),locations:STAGE_LOCATIONS[title]||[]});
       });
     });
     stages.sort(function(a,b){return a.date===b.date?a.start-b.start:a.date<b.date?-1:1;});
@@ -106,6 +146,56 @@
     return {dayId:dayId,stage:stage};
   }
 
+  function gpsFromExif(exif){
+    if(!exif)return null;
+    var lat=exif.latitude,lon=exif.longitude;
+    if(typeof lat!=='number'||typeof lon!=='number')return null;
+    if(!isFinite(lat)||!isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180)return null;
+    return {lat:lat,lon:lon};
+  }
+
+  function distanceKm(a,b){
+    var rad=Math.PI/180,lat1=a.lat*rad,lat2=b.lat*rad;
+    var dLat=(b.lat-a.lat)*rad,dLon=(b.lon-a.lon)*rad;
+    var h=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1)*Math.cos(lat2)*Math.sin(dLon/2)*Math.sin(dLon/2);
+    return 6371*2*Math.atan2(Math.sqrt(h),Math.sqrt(1-h));
+  }
+
+  function matchGps(gps,dayId){
+    if(!gps)return null;
+    var best=null;
+    state.stages.forEach(function(stage){
+      if(dayId&&stage.dayId!==dayId)return;
+      stage.locations.forEach(function(location){
+        var distance=distanceKm(gps,location);
+        if(distance<=location.radius/1000&&(!best||distance<best.distance))best={stage:stage,distance:distance};
+      });
+    });
+    return best;
+  }
+
+  var lastGeocode=0;
+  async function reverseLocation(gps){
+    var wait=Math.max(0,1100-(Date.now()-lastGeocode));
+    if(wait)await new Promise(function(resolve){setTimeout(resolve,wait);});
+    var query=encodeURIComponent(gps.lat)+'&lon='+encodeURIComponent(gps.lon);
+    var response=await fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+query+'&zoom=16',{
+      headers:{Accept:'application/json','Accept-Language':'en'}
+    });
+    lastGeocode=Date.now();
+    if(!response.ok)throw new Error('Location lookup failed');
+    var data=await response.json();
+    var address=data.address||{};
+    return (data.namedetails&&data.namedetails.name)||data.name||address.tourism||address.attraction||
+      address.amenity||address.building||address.shop||address.leisure||address.historic||
+      address.neighbourhood||address.suburb||address.city_district||address.city||address.town||
+      address.village||data.display_name||null;
+  }
+
+  function gpsLabel(gps){
+    return 'GPS '+gps.lat.toFixed(4)+','+gps.lon.toFixed(4);
+  }
+
   function metadata(exif,captured){
     return {
       make:exif.Make||null,
@@ -132,7 +222,7 @@
     var ext=(file.name.toLowerCase().match(/\.(heic|heif|jpe?g)$/)||[])[1];
     if(!ext)return formatError(file,'Only iPhone HEIC/HEIF and Samsung/iPhone JPEG files are accepted.');
     if(file.size>MAX_BYTES)return formatError(file,'File is larger than 12 MB. Choose a smaller original.');
-    var item={file:file,id:'photo-'+Date.now()+'-'+Math.random().toString(36).slice(2),status:'checking',error:'',preview:null,capturedAt:null,dayId:null,stage:null,exif:null};
+    var item={file:file,id:'photo-'+Date.now()+'-'+Math.random().toString(36).slice(2),status:'checking',error:'',preview:null,capturedAt:null,dayId:null,stage:null,exif:null,gps:null,locationName:null,locationSource:null};
     if(/jpe?g/.test(ext)&&window.URL&&URL.createObjectURL)item.preview=URL.createObjectURL(file);
     state.items.push(item);
     renderQueue();
@@ -142,9 +232,22 @@
       if(!exif||Object.keys(exif).length===0)throw new Error('No EXIF metadata found. Choose the original photo with EXIF data.');
       item.exif=exif;
       item.capturedAt=dateFromExif(exif);
+      item.gps=gpsFromExif(exif);
       var match=matchCaptured(item.capturedAt);
       item.dayId=match.dayId;
       item.stage=match.stage;
+      var geoMatch=matchGps(item.gps,item.dayId);
+      if(geoMatch){
+        item.stage=geoMatch.stage;
+        item.dayId=geoMatch.stage.dayId;
+      }
+      item.locationSource=geoMatch?'exif-gps':item.stage?'exif-datetime':item.gps?'exif-gps-unmatched':'exif-datetime-unmatched';
+      if(item.stage){
+        item.locationName=item.stage.title;
+      }else if(item.gps){
+        try{item.locationName=await reverseLocation(item.gps)||gpsLabel(item.gps);}
+        catch(e){item.locationName=gpsLabel(item.gps);}
+      }
       item.status='ready';
     }catch(error){
       item.status='error';
@@ -178,6 +281,8 @@
     select.value=item.stage?item.stage.id:'';
     select.addEventListener('change',function(){
       item.stage=state.stages.find(function(s){return s.id===select.value;})||null;
+      item.locationSource=item.stage?'manual-stage':item.locationSource;
+      item.locationName=item.stage?item.stage.title:item.locationName;
       renderQueue();
     });
     return select;
@@ -201,7 +306,7 @@
         item.status==='uploading'?'Uploading to Supabase…':
         item.status==='done'?'Uploaded and added to the wall':
         item.status==='error'?item.error:
-        item.stage?'Matched: '+item.stage.title:'Additional photo · a new itinerary entry will be created';
+        item.stage?'Matched: '+item.stage.title:item.locationName?'New location: '+item.locationName:'Additional photo · a new itinerary entry will be created';
       info.appendChild(node('div','qstate',text));
       if(item.status==='ready')info.appendChild(stageSelect(item));
       row.appendChild(info);
@@ -260,6 +365,10 @@
       day_id:item.stage?item.stage.dayId:item.dayId,
       stage_id:item.stage?item.stage.id:null,
       stage_title:item.stage?item.stage.title:null,
+      latitude:item.gps?item.gps.lat:null,
+      longitude:item.gps?item.gps.lon:null,
+      location_name:item.locationName,
+      location_source:item.locationSource,
       exif:metadata(item.exif,item.capturedAt)
     };
     var insert=await fetch(baseUrl()+'/rest/v1/'+config.table,{
@@ -338,7 +447,7 @@
       var key=dayId||'extra';
       if(!groups[key])groups[key]={dayId:dayId,photos:[],stages:{}};
       groups[key].photos.push(photo);
-      var stageKey=photo.stage_id||'additional';
+      var stageKey=photo.stage_id||photo.location_name||'additional';
       if(!groups[key].stages[stageKey])groups[key].stages[stageKey]=[];
       groups[key].stages[stageKey].push(photo);
     });
@@ -368,7 +477,7 @@
         var stage=stageFor(photos[0]);
         var card=node('article','wall-stage');
         var title=node('div','wall-stagetitle');
-        title.appendChild(node('h4','',stage?stage.title:'Additional Crew Photos'));
+        title.appendChild(node('h4','',stage?stage.title:photos[0].location_name||'Additional Crew Photos'));
         title.appendChild(node('span','',stage?stage.startLabel+' · '+photos.length+' photo'+(photos.length===1?'':'s'):'New itinerary entry'));
         card.appendChild(title);
         card.appendChild(photoGrid(photos));
@@ -403,7 +512,7 @@
     head.tabIndex=0;
     head.setAttribute('aria-expanded','false');
     head.appendChild(node('span','t',time));
-    head.appendChild(node('h3','',undated&&first.captured_at?'Crew Photos · '+String(first.captured_at).slice(0,10):undated?'Undated Crew Photos':'Additional Crew Photos'));
+    head.appendChild(node('h3','',first.location_name||(undated&&first.captured_at?'Crew Photos · '+String(first.captured_at).slice(0,10):undated?'Undated Crew Photos':'Additional Crew Photos')));
     head.appendChild(node('span','chev','▾'));
     card.appendChild(head);
     var sign=node('div','ntsign');

@@ -11,12 +11,19 @@ create table if not exists public.crew_photos (
   day_id text,
   stage_id text,
   stage_title text,
+  latitude double precision,
+  longitude double precision,
+  location_name text,
+  location_source text,
   exif jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now()
 );
 
 create index if not exists crew_photos_day_stage_idx
   on public.crew_photos (day_id, stage_id, captured_at);
+
+create index if not exists crew_photos_location_idx
+  on public.crew_photos (latitude, longitude);
 
 alter table public.crew_photos enable row level security;
 
