@@ -15,6 +15,7 @@ create table if not exists public.crew_photos (
   longitude double precision,
   location_name text,
   location_source text,
+  content_hash text unique,
   exif jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now()
 );

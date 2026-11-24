@@ -218,11 +218,34 @@
     return {file:file,id:'photo-'+Date.now()+'-'+Math.random().toString(36).slice(2),status:'error',error:message,preview:null};
   }
 
+  async function hashFile(file){
+    if(!window.crypto||!crypto.subtle)throw new Error('This browser cannot calculate duplicate-safe file hashes.');
+    var buffer=await file.arrayBuffer();
+    var digest=await crypto.subtle.digest('SHA-256',buffer);
+    return Array.from(new Uint8Array(digest)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
+  }
+
+  async function findDuplicate(hash){
+    if(!configured()||!hash)return null;
+    var response=await fetch(baseUrl()+'/rest/v1/'+config.table+'?select=*&content_hash=eq.'+encodeURIComponent(hash)+'&limit=1',{
+      headers:authHeaders()
+    });
+    if(!response.ok)throw new Error('Duplicate check failed: '+await responseError(response));
+    var rows=await response.json();
+    return rows.length?rows[0]:null;
+  }
+
+  function markDuplicate(item,photo){
+    item.status='duplicate';
+    item.record=photo;
+    renderQueue();
+  }
+
   async function prepare(file){
     var ext=(file.name.toLowerCase().match(/\.(heic|heif|jpe?g)$/)||[])[1];
     if(!ext)return formatError(file,'Only iPhone HEIC/HEIF and Samsung/iPhone JPEG files are accepted.');
     if(file.size>MAX_BYTES)return formatError(file,'File is larger than 12 MB. Choose a smaller original.');
-    var item={file:file,id:'photo-'+Date.now()+'-'+Math.random().toString(36).slice(2),status:'checking',error:'',preview:null,capturedAt:null,dayId:null,stage:null,exif:null,gps:null,locationName:null,locationSource:null};
+    var item={file:file,id:'photo-'+Date.now()+'-'+Math.random().toString(36).slice(2),status:'checking',error:'',preview:null,capturedAt:null,dayId:null,stage:null,exif:null,gps:null,locationName:null,locationSource:null,contentHash:null};
     if(/jpe?g/.test(ext)&&window.URL&&URL.createObjectURL)item.preview=URL.createObjectURL(file);
     state.items.push(item);
     renderQueue();
@@ -233,6 +256,9 @@
       item.exif=exif;
       item.capturedAt=dateFromExif(exif);
       item.gps=gpsFromExif(exif);
+      item.contentHash=await hashFile(file);
+      var duplicate=await findDuplicate(item.contentHash);
+      if(duplicate){markDuplicate(item,duplicate);return;}
       var match=matchCaptured(item.capturedAt);
       item.dayId=match.dayId;
       item.stage=match.stage;
@@ -264,7 +290,9 @@
     for(var i=0;i<list.length;i++)await prepare(list[i]);
     var ready=state.items.filter(function(i){return i.status==='ready';}).length;
     var errors=state.items.filter(function(i){return i.status==='error';}).length;
-    setStatus(ready+' ready'+(errors?' · '+errors+' not accepted':''));
+    var duplicates=state.items.filter(function(i){return i.status==='duplicate';}).length;
+    els.input.value='';
+    setStatus(ready+' ready'+(errors?' · '+errors+' not accepted':'')+(duplicates?' · '+duplicates+' duplicate'+(duplicates===1?'':'s')+' skipped':''));
   }
 
   function stageSelect(item){
@@ -291,7 +319,7 @@
   function renderQueue(){
     els.queue.innerHTML='';
     state.items.forEach(function(item){
-      var row=node('div','qrow '+(item.status==='error'?'error':item.status==='ready'?'ready':''));
+      var row=node('div','qrow '+(item.status==='error'?'error':item.status==='duplicate'?'duplicate':item.status==='ready'?'ready':''));
       if(item.preview){
         var img=node('img','qthumb');
         img.src=item.preview;
@@ -305,6 +333,7 @@
       var text=item.status==='checking'?'Checking EXIF…':
         item.status==='uploading'?'Uploading to Supabase…':
         item.status==='done'?'Uploaded and added to the wall':
+        item.status==='duplicate'?'Already uploaded by the crew · skipped':
         item.status==='error'?item.error:
         item.stage?'Matched: '+item.stage.title:item.locationName?'New location: '+item.locationName:'Additional photo · a new itinerary entry will be created';
       info.appendChild(node('div','qstate',text));
@@ -330,10 +359,9 @@
     setStatus('Selection cleared.');
   }
 
-  function pathFor(file){
+  function pathFor(file,hash){
     var ext=(file.name.toLowerCase().match(/\.(heic|heif|jpe?g)$/)||['','jpg'])[1].replace('jpeg','jpg');
-    var id=window.crypto&&crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random().toString(36).slice(2);
-    return id+'.'+ext;
+    return hash+'.'+ext;
   }
 
   async function responseError(response){
@@ -347,13 +375,19 @@
   async function uploadOne(item){
     item.status='uploading';
     renderQueue();
-    var path=pathFor(item.file);
+    var existing=await findDuplicate(item.contentHash);
+    if(existing){markDuplicate(item,existing);return;}
+    var path=pathFor(item.file,item.contentHash);
     var mime=item.file.type||(/jpe?g$/i.test(item.file.name)?'image/jpeg':'image/heic');
     var upload=await fetch(baseUrl()+'/storage/v1/object/'+config.bucket+'/'+path,{
       method:'POST',
       headers:Object.assign(authHeaders(),{'Content-Type':mime,'x-upsert':'false'}),
       body:item.file
     });
+    if(!upload.ok&&(upload.status===400||upload.status===409)){
+      existing=await findDuplicate(item.contentHash);
+      if(existing){markDuplicate(item,existing);return;}
+    }
     if(!upload.ok)throw new Error('Storage upload failed: '+await responseError(upload));
     var record={
       file_path:path,
@@ -369,6 +403,7 @@
       longitude:item.gps?item.gps.lon:null,
       location_name:item.locationName,
       location_source:item.locationSource,
+      content_hash:item.contentHash,
       exif:metadata(item.exif,item.capturedAt)
     };
     var insert=await fetch(baseUrl()+'/rest/v1/'+config.table,{
@@ -376,6 +411,10 @@
       headers:Object.assign(authHeaders(),{'Content-Type':'application/json',Prefer:'return=representation'}),
       body:JSON.stringify(record)
     });
+    if(!insert.ok&&(insert.status===400||insert.status===409)){
+      existing=await findDuplicate(item.contentHash);
+      if(existing){markDuplicate(item,existing);return;}
+    }
     if(!insert.ok)throw new Error('Metadata save failed: '+await responseError(insert));
     var saved=await insert.json();
     item.record=Array.isArray(saved)?saved[0]:saved;
@@ -390,11 +429,12 @@
     if(!ready.length)return;
     state.busy=true;
     updateActions();
-    var completed=0,failed=0;
+    var completed=0,failed=0,duplicates=0;
     for(var i=0;i<ready.length;i++){
       try{
         await uploadOne(ready[i]);
-        completed++;
+        if(ready[i].status==='duplicate')duplicates++;
+        else completed++;
       }catch(error){
         ready[i].status='error';
         ready[i].error=error&&error.message?error.message:'Upload failed.';
@@ -405,8 +445,8 @@
     }
     state.items=state.items.filter(function(i){return i.status!=='done';});
     state.busy=false;
-    renderAll();
-    setStatus(completed+' photo'+(completed===1?'':'s')+' uploaded'+(failed?' · '+failed+' failed':' · photo wall updated'));
+    await loadPhotos();
+    setStatus(completed+' photo'+(completed===1?'':'s')+' uploaded'+(failed?' · '+failed+' failed':'')+(duplicates?' · '+duplicates+' duplicate'+(duplicates===1?'':'s')+' skipped':' · photo wall updated'));
   }
 
   function photoDay(photo){
